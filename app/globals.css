@@ -53,11 +53,12 @@ html *::after {
   font-synthesis: none !important;
 }
 
-/* How it works - index-en style */
+/* How it works - index-en style (constrained width, space left/right) */
 .how-it-works-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0;
+  max-width: 80rem;
 }
 @media (min-width: 768px) {
   .how-it-works-grid {
@@ -97,29 +98,6 @@ html *::after {
   object-fit: cover;
   object-position: 10% 50%;
 }
-.how-it-works-symptoms {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-.how-it-works-symptom {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 1rem;
-  font-size: 0.875rem;
-  color: #151414;
-  font-weight: 500;
-  background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.25));
-  backdrop-filter: blur(4px);
-  border-radius: 99em;
-  border: 1px solid rgba(255,255,255,0.3);
-}
-.how-it-works-symptom .material-symbols-outlined {
-  font-size: 1.25rem;
-}
-
 /* FAQ - index-en style grid */
 .faq-section {
   display: flex;
@@ -141,10 +119,11 @@ html *::after {
   margin: 0;
   padding: 1rem;
   border-bottom: 1px solid #ffc3c3;
-  border-right: none;
+  border-right: 1px solid #ffc3c3;
 }
 .faq-items li:last-child {
   border-bottom: none;
+  border-right: none;
 }
 .faq-items li h3 {
   font-size: 1rem;
@@ -158,13 +137,20 @@ html *::after {
   margin: 0;
   color: #5b3136;
 }
+/* 1-col: only bottom borders, no right */
+@media (max-width: 767px) {
+  .faq-items li {
+    border-right: none;
+  }
+}
+/* 2-col: vertical between cols, horizontal between rows */
 @media (min-width: 768px) {
   .faq-items {
     grid-template-columns: repeat(2, 1fr);
   }
   .faq-items li {
-    border-bottom: 1px solid #ffc3c3;
     border-right: 1px solid #ffc3c3;
+    border-bottom: 1px solid #ffc3c3;
   }
   .faq-items li:nth-child(even) {
     border-right: none;
@@ -173,6 +159,7 @@ html *::after {
     border-bottom: none;
   }
 }
+/* 3-col: full grid with vertical and horizontal dividers */
 @media (min-width: 1024px) {
   .faq-items {
     grid-template-columns: repeat(3, 1fr);

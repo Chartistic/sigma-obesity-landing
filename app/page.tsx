@@ -209,9 +209,10 @@ export default function Home() {
         {/* 5) How it works - index-en layout with obesity text */}
         <section
           id="how-it-works"
-          className="how-it-works-grid border-t border-patient-200/50"
+          className="border-t border-patient-200/50 px-4 py-12 md:px-8 md:py-16"
           aria-labelledby="how-heading"
         >
+          <div className="how-it-works-grid mx-auto max-w-6xl">
           <div className="how-it-works-content">
             <h2
               id="how-heading"
@@ -283,35 +284,7 @@ export default function Home() {
               alt=""
               className="person-img absolute inset-0 h-full w-full"
             />
-            <div className="how-it-works-symptoms">
-              <div
-                className="how-it-works-symptom"
-                style={{ top: "15%", left: "34%" }}
-              >
-                <span className="material-symbols-outlined" aria-hidden>
-                  assignment_turned_in
-                </span>
-                Medical intake
-              </div>
-              <div
-                className="how-it-works-symptom"
-                style={{ top: "28%", left: "60%" }}
-              >
-                <span className="material-symbols-outlined" aria-hidden>
-                  supervised_user_circle
-                </span>
-                Physician-led
-              </div>
-              <div
-                className="how-it-works-symptom"
-                style={{ top: "40%", left: "30%" }}
-              >
-                <span className="material-symbols-outlined" aria-hidden>
-                  work_history
-                </span>
-                Ongoing support
-              </div>
-            </div>
+          </div>
           </div>
         </section>
 
@@ -572,7 +545,7 @@ export default function Home() {
           <div className="flex flex-col justify-center gap-6 px-4 py-16 md:px-12 md:py-20 lg:px-16">
             <h2
               id="cta-heading"
-              className="text-center text-3xl font-semibold leading-tight tracking-tight text-patient-950 md:text-left md:text-4xl lg:text-[3.5rem]"
+              className="text-center text-3xl font-semibold leading-relaxed tracking-tight text-patient-950 md:text-left md:text-4xl lg:text-[3.5rem]"
             >
               Your weight shouldn&apos;t wait.
             </h2>
