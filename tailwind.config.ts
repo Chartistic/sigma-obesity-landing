@@ -12,7 +12,10 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["var(--font-mona)", "Mona Sans", "ui-sans-serif", "system-ui", "sans-serif"],
+      },
+      fontWeight: {
+        bold: "600", // Use SemiBold font, not synthesized bold
       },
       colors: {
         patient: {

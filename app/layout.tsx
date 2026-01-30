@@ -1,13 +1,13 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Mona_Sans } from "next/font/google";
 import { NoItalic } from "./NoItalic";
 
-const inter = Inter({
+const monaSans = Mona_Sans({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "600"],
   style: "normal",
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-mona",
 });
 
 const noItalicCSS = `
@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable} style={{ fontStyle: "normal" }}>
+    <html lang="en" className={monaSans.variable} style={{ fontStyle: "normal" }}>
       <head>
         <style dangerouslySetInnerHTML={{ __html: noItalicCSS }} />
       </head>
