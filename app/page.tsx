@@ -326,44 +326,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 7) Who it's for / not for */}
-        <section
-          className="border-t border-patient-200/50 px-4 py-16 md:px-16 md:py-20"
-          aria-labelledby="who-heading"
-        >
-          <div className="mx-auto max-w-[90rem]">
-            <h2
-              id="who-heading"
-              className="text-center text-2xl font-semibold tracking-tight text-patient-950 md:text-3xl"
-            >
-              Who it's for / not for
-            </h2>
-            <div className="mx-auto mt-12 grid max-w-4xl gap-8 md:grid-cols-2">
-              <div className="border border-patient-200/60 bg-patient-50/50 p-6">
-                <h3 className="text-lg font-semibold text-patient-950">
-                  Who this is for
-                </h3>
-                <ul className="mt-4 list-disc space-y-2 pl-6 text-base text-patient-800" role="list">
-                  <li>Adults who want physician-led support for obesity or overweight</li>
-                  <li>People who value a structured program with follow-ups</li>
-                  <li>Those looking for responsible, evidence-based care</li>
-                </ul>
-              </div>
-              <div className="border border-patient-200/60 bg-white p-6">
-                <h3 className="text-lg font-semibold text-patient-950">
-                  Who this is not for
-                </h3>
-                <ul className="mt-4 list-disc space-y-2 pl-6 text-base text-patient-800" role="list">
-                  <li>Emergencies or severe symptoms needing urgent care</li>
-                  <li>Anyone seeking guaranteed prescriptions or guaranteed results</li>
-                  <li>People unwilling to complete a medical intake (required for safe care)</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 8) Pricing */}
+        {/* 7) Pricing */}
         <section
           id="pricing"
           className="border-t border-patient-200/50 bg-gradient-to-br from-doctor-100/50 to-white px-4 py-16 md:px-16 md:py-20"
