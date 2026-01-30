@@ -68,62 +68,71 @@ export default function Home() {
           aria-labelledby="hero-heading"
         >
           <div className="mx-auto max-w-[90rem]">
-            <div className="mx-auto max-w-prose text-center">
-              <h1
-                id="hero-heading"
-                className="text-3xl font-semibold leading-[1.1] tracking-tight text-patient-950 md:text-4xl lg:text-5xl"
-              >
-                When you've tried everything, care should feel different.
-              </h1>
-              <p className="mt-6 text-lg leading-relaxed text-patient-800 md:max-w-[42rem] md:text-xl md:leading-relaxed">
-                Obesity is a medical condition, not a character flaw. This is a
-                physician-led program designed to work with your biology - with
-                a thorough medical evaluation and steady follow-up support.
-                GLP-1 medications may be discussed when clinically appropriate.
-              </p>
-              <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                <Link
-                  href="/checkout"
-                  className="inline-flex w-full items-center justify-center rounded-full border border-patient-900 bg-patient-900 px-6 py-3.5 text-base font-medium text-white no-underline transition hover:bg-patient-800 focus:outline-none focus:ring-2 focus:ring-patient-500 focus:ring-offset-2 sm:w-auto"
+            <div className="grid grid-cols-1 gap-10 items-center lg:grid-cols-3 lg:gap-12">
+              <div className="text-center lg:col-span-2 lg:text-left">
+                <h1
+                  id="hero-heading"
+                  className="text-3xl font-semibold leading-[1.1] tracking-tight text-patient-950 md:text-4xl lg:text-5xl"
                 >
-                  Start membership
-                </Link>
-                <a
-                  href="#pricing"
-                  className="inline-flex w-full items-center justify-center rounded-full border border-patient-900 bg-transparent px-6 py-3.5 text-base font-medium text-patient-900 no-underline transition hover:bg-patient-100 focus:outline-none focus:ring-2 focus:ring-patient-500 focus:ring-offset-2 sm:w-auto"
+                  When you've tried everything, care should feel different.
+                </h1>
+                <p className="mt-6 text-lg leading-relaxed text-patient-800 md:max-w-[42rem] md:text-xl md:leading-relaxed lg:max-w-none mx-auto lg:mx-0">
+                  Obesity is a medical condition, not a character flaw. This is a
+                  physician-led program designed to work with your biology - with
+                  a thorough medical evaluation and steady follow-up support.
+                  GLP-1 medications may be discussed when clinically appropriate.
+                </p>
+                <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
+                  <Link
+                    href="/checkout"
+                    className="inline-flex w-full items-center justify-center rounded-full border border-patient-900 bg-patient-900 px-6 py-3.5 text-base font-medium text-white no-underline transition hover:bg-patient-800 focus:outline-none focus:ring-2 focus:ring-patient-500 focus:ring-offset-2 sm:w-auto"
+                  >
+                    Start membership
+                  </Link>
+                  <a
+                    href="#pricing"
+                    className="inline-flex w-full items-center justify-center rounded-full border border-patient-900 bg-transparent px-6 py-3.5 text-base font-medium text-patient-900 no-underline transition hover:bg-patient-100 focus:outline-none focus:ring-2 focus:ring-patient-500 focus:ring-offset-2 sm:w-auto"
+                  >
+                    See pricing + how it works
+                  </a>
+                </div>
+                <p className="mt-6 max-w-[38rem] text-sm leading-relaxed text-patient-700 mx-auto lg:mx-0">
+                  After checkout, you'll complete a detailed medical intake
+                  (typically 20-45 minutes). If the physician determines you're
+                  not clinically appropriate for the program, you can request a
+                  refund within {REFUND_DAYS} days after completing intake.
+                </p>
+                <ul
+                  className="mt-10 flex flex-col gap-3 text-left text-sm text-patient-700 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6 lg:justify-start"
+                  role="list"
                 >
-                  See pricing + how it works
-                </a>
+                  <li className="flex items-center gap-2">
+                    <span className="text-patient-400" aria-hidden>
+                      —
+                    </span>
+                    Led by Dr. Gauri Behari, U.S.-licensed physician (Phoenix, AZ)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-patient-400" aria-hidden>
+                      —
+                    </span>
+                    Secure handling of your information
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-patient-400" aria-hidden>
+                      —
+                    </span>
+                    Built for continuity, not one-off visits
+                  </li>
+                </ul>
               </div>
-              <p className="mt-6 max-w-[38rem] text-sm leading-relaxed text-patient-700">
-                After checkout, you'll complete a detailed medical intake
-                (typically 20-45 minutes). If the physician determines you're
-                not clinically appropriate for the program, you can request a
-                refund within {REFUND_DAYS} days after completing intake.
-              </p>
-              <ul
-                className="mt-10 flex flex-col gap-3 text-left text-sm text-patient-700 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6"
-                role="list"
-              >
-                <li className="flex items-center gap-2">
-                  <span className="text-patient-400" aria-hidden>
-                    —
-                  </span>
-                  Led by Dr. Gauri Behari, U.S.-licensed physician (Phoenix, AZ)
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-patient-400" aria-hidden>
-                    —
-                  </span>
-                  Secure handling of your information
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-patient-400" aria-hidden>
-                    —
-                  </span>
-                  Built for continuity, not one-off visits
-                </li>
-              </ul>
+              <div className="flex justify-center lg:col-span-1 lg:justify-end">
+                <img
+                  src="/overweight-model1.jpg"
+                  alt=""
+                  className="object-cover w-full max-w-md lg:max-w-none aspect-[4/3] lg:aspect-auto"
+                />
+              </div>
             </div>
           </div>
         </section>
