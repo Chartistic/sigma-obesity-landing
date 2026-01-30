@@ -72,7 +72,7 @@ export default function Home() {
               <div className="text-center lg:col-span-2 lg:text-left">
                 <h1
                   id="hero-heading"
-                  className="text-3xl font-semibold leading-[1.1] tracking-tight text-patient-950 md:text-4xl lg:text-5xl"
+                  className="hero-headline text-4xl font-semibold tracking-tight text-patient-950 md:text-5xl lg:text-6xl"
                 >
                   When you've tried everything, care should feel different.
                 </h1>
@@ -209,7 +209,7 @@ export default function Home() {
         {/* 5) How it works - index-en layout with obesity text */}
         <section
           id="how-it-works"
-          className="border-t border-patient-200/50 px-4 py-12 md:px-8 md:py-16"
+          className="border-t border-patient-200/50 px-8 py-12 md:px-16 md:py-16"
           aria-labelledby="how-heading"
         >
           <div className="how-it-works-grid mx-auto max-w-6xl">
@@ -542,10 +542,10 @@ export default function Home() {
           }}
           aria-labelledby="cta-heading"
         >
-          <div className="flex flex-col justify-center gap-6 px-4 py-16 md:px-12 md:py-20 lg:px-16">
+          <div className="flex flex-col justify-center gap-6 px-8 py-16 md:px-16 md:py-20 lg:px-20">
             <h2
               id="cta-heading"
-              className="text-center text-3xl font-semibold leading-relaxed tracking-tight text-patient-950 md:text-left md:text-4xl lg:text-[3.5rem]"
+              className="cta-headline text-center text-3xl font-semibold tracking-tight text-patient-950 md:text-left md:text-4xl lg:text-[3.5rem]"
             >
               Your weight shouldn&apos;t wait.
             </h2>

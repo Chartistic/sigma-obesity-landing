@@ -53,6 +53,40 @@ html *::after {
   font-synthesis: none !important;
 }
 
+/* Hero headline - larger title with proportional line spacing */
+.hero-headline {
+  line-height: 1.35;
+}
+
+@media (min-width: 768px) {
+  .hero-headline {
+    line-height: 1.4;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-headline {
+    line-height: 1.45;
+  }
+}
+
+/* CTA headline - generous line-height to prevent overlap on line breaks */
+.cta-headline {
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .cta-headline {
+    line-height: 1.7;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cta-headline {
+    line-height: 1.75;
+  }
+}
+
 /* How it works - index-en style (constrained width, space left/right) */
 .how-it-works-grid {
   display: grid;
