@@ -9,6 +9,7 @@
   body {
     @apply antialiased text-patient-950 bg-white;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-synthesis: none; /* prevent browser from synthesizing italic/bold */
   }
   /* Force no italic anywhere on the page */
   *,

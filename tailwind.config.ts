@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-mona)", "Mona Sans", "system-ui", "sans-serif"],
+        sans: ["ui-sans-serif", "system-ui", "sans-serif", '"Helvetica Neue"', "Arial", "sans-serif"],
       },
       colors: {
         patient: {
