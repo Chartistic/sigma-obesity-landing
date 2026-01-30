@@ -5,15 +5,25 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-style: normal !important;
   }
   body {
     @apply antialiased text-patient-950 bg-white;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-style: normal !important;
     font-synthesis: none;
+  }
+  /* Override any italic from Tailwind or defaults */
+  em, i {
+    font-style: normal !important;
   }
 }
 
-/* No italic anywhere - loaded last, no layer so it overrides everything */
-html, body, body *, body *::before, body *::after {
+/* No italic anywhere - unlayered so it wins over Tailwind layers */
+html, body, body *, body *::before, body *::after,
+em, i {
   font-style: normal !important;
+}
+* {
+  font-synthesis: none !important;
 }

@@ -1,8 +1,18 @@
 import "./globals.css";
+import { Inter } from "next/font/google";
+import { NoItalic } from "./NoItalic";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  style: "normal",
+  display: "swap",
+  variable: "--font-inter",
+});
 
 const noItalicCSS = `
-  *, *::before, *::after { font-style: normal !important; }
-  em, i { font-style: normal !important; }
+  html,body,body *,body *::before,body *::after,em,i{font-style:normal!important}
+  *{font-synthesis:none!important}
 `;
 
 export default function RootLayout({
@@ -11,11 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable} style={{ fontStyle: "normal" }}>
       <head>
         <style dangerouslySetInnerHTML={{ __html: noItalicCSS }} />
       </head>
-      <body className="min-h-screen font-sans">
+      <body className="min-h-screen font-sans" style={{ fontStyle: "normal" }}>
+        <NoItalic />
         {children}
       </body>
     </html>

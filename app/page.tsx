@@ -22,7 +22,7 @@ const INSURANCE_POLICY = "[Insert your actual policy].";
 
 export default function Home() {
   return (
-    <>
+    <div className="not-italic" style={{ fontStyle: "normal" }}>
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[1000] focus:bg-white focus:px-4 focus:py-2 focus:underline"
@@ -673,6 +673,6 @@ export default function Home() {
           </div>
         </footer>
       </main>
-    </>
+    </div>
   );
 }
