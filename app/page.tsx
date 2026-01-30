@@ -206,63 +206,62 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 5) How it works */}
+        {/* 5) How it works - index-en layout with obesity text */}
         <section
-          className="border-t border-patient-200/50 px-4 py-16 md:px-16 md:py-20"
+          id="how-it-works"
+          className="how-it-works-grid border-t border-patient-200/50"
           aria-labelledby="how-heading"
         >
-          <div className="mx-auto max-w-[90rem]">
+          <div className="how-it-works-content">
             <h2
               id="how-heading"
-              className="text-center text-2xl font-semibold tracking-tight text-patient-950 md:text-3xl"
+              className="mb-4 text-left text-2xl font-semibold tracking-tight text-patient-950 md:text-3xl"
             >
               How it works
             </h2>
-            <ol
-              className="mx-auto mt-12 max-w-2xl space-y-10"
-              role="list"
-            >
-              {[
-                {
-                  step: 1,
-                  title: "Start membership",
-                  text: "Choose a plan and create your account in under 2 minutes.",
-                },
-                {
-                  step: 2,
-                  title: "Complete your medical intake after checkout",
-                  text: "A structured, clinician-designed intake that captures what matters for safe care.",
-                },
-                {
-                  step: 3,
-                  title: "Physician review",
-                  text: "Your physician reviews your intake and determines what options are clinically appropriate.",
-                },
-                {
-                  step: 4,
-                  title: "Your plan + ongoing follow-ups",
-                  text: "You receive clear next steps and ongoing support. If you are prescribed medication, it is based on medical judgment and appropriateness.",
-                },
-              ].map((item) => (
-                <li key={item.step} className="flex gap-6">
-                  <span
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-patient-200/70 text-sm font-semibold text-patient-900"
-                    aria-hidden
-                  >
-                    {item.step}
-                  </span>
-                  <div>
-                    <h3 className="text-lg font-semibold text-patient-950">
-                      Step {item.step} – {item.title}
-                    </h3>
-                    <p className="mt-2 text-base leading-relaxed text-patient-800">
-                      {item.text}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <p className="mt-12 text-center">
+            <hr className="how-it-works-hr" />
+            <div className="mt-4 space-y-4">
+              <div>
+                <h3 className="text-lg font-semibold text-patient-950">
+                  1. Start membership
+                </h3>
+                <p className="mt-1 text-base leading-relaxed text-patient-800">
+                  Choose a plan and create your account in under 2 minutes.
+                </p>
+              </div>
+              <hr className="how-it-works-hr" />
+              <div>
+                <h3 className="text-lg font-semibold text-patient-950">
+                  2. Complete your medical intake after checkout
+                </h3>
+                <p className="mt-1 text-base leading-relaxed text-patient-800">
+                  A structured, clinician-designed intake that captures what
+                  matters for safe care.
+                </p>
+              </div>
+              <hr className="how-it-works-hr" />
+              <div>
+                <h3 className="text-lg font-semibold text-patient-950">
+                  3. Physician review
+                </h3>
+                <p className="mt-1 text-base leading-relaxed text-patient-800">
+                  Your physician reviews your intake and determines what options
+                  are clinically appropriate.
+                </p>
+              </div>
+              <hr className="how-it-works-hr" />
+              <div>
+                <h3 className="text-lg font-semibold text-patient-950">
+                  4. Your plan + ongoing follow-ups
+                </h3>
+                <p className="mt-1 text-base leading-relaxed text-patient-800">
+                  You receive clear next steps and ongoing support. If you are
+                  prescribed medication, it is based on medical judgment and
+                  appropriateness.
+                </p>
+              </div>
+            </div>
+            <p className="mt-8">
               <Link
                 href="/checkout"
                 className="inline-flex items-center justify-center rounded-full border border-patient-900 bg-patient-900 px-6 py-3.5 text-base font-medium text-white no-underline transition hover:bg-patient-800 focus:outline-none focus:ring-2 focus:ring-patient-500 focus:ring-offset-2"
@@ -270,6 +269,49 @@ export default function Home() {
                 Start membership
               </Link>
             </p>
+          </div>
+          <div className="how-it-works-graphic">
+            <div
+              className="absolute inset-0 opacity-20"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 24H36' stroke='white' stroke-width='2'/%3E%3Cpath d='M24 12V36' stroke='white' stroke-width='2'/%3E%3C/svg%3E")`,
+                backgroundSize: "48px 48px",
+              }}
+            />
+            <img
+              src="/overweight-model2.jpg"
+              alt=""
+              className="person-img absolute inset-0 h-full w-full"
+            />
+            <div className="how-it-works-symptoms">
+              <div
+                className="how-it-works-symptom"
+                style={{ top: "15%", left: "34%" }}
+              >
+                <span className="material-symbols-outlined" aria-hidden>
+                  assignment_turned_in
+                </span>
+                Medical intake
+              </div>
+              <div
+                className="how-it-works-symptom"
+                style={{ top: "28%", left: "60%" }}
+              >
+                <span className="material-symbols-outlined" aria-hidden>
+                  supervised_user_circle
+                </span>
+                Physician-led
+              </div>
+              <div
+                className="how-it-works-symptom"
+                style={{ top: "40%", left: "30%" }}
+              >
+                <span className="material-symbols-outlined" aria-hidden>
+                  work_history
+                </span>
+                Ongoing support
+              </div>
+            </div>
           </div>
         </section>
 
@@ -462,106 +504,103 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 11) FAQ */}
+        {/* 11) FAQ - index-en grid layout with obesity text */}
         <section
-          className="border-t border-patient-200/50 px-4 py-16 md:px-16 md:py-20"
+          id="faq"
+          className="faq-section border-t border-patient-200/50 bg-patient-50/30 px-4 py-16 md:px-16 md:py-20"
           aria-labelledby="faq-heading"
         >
-          <div className="mx-auto max-w-[90rem]">
-            <h2
-              id="faq-heading"
-              className="text-center text-2xl font-semibold tracking-tight text-patient-950 md:text-3xl"
-            >
-              FAQ
-            </h2>
-            <div className="mx-auto mt-12 max-w-2xl space-y-4">
-              <details className="group border border-patient-200/60 bg-white">
-                <summary className="cursor-pointer list-none px-6 py-4 font-semibold text-patient-950 [&::-webkit-details-marker]:hidden">
-                  Will I get a GLP-1 if I join?
-                </summary>
-                <p className="border-t border-patient-200/40 px-6 pb-4 pt-2 text-base leading-relaxed text-patient-800">
-                  No. Joining starts the evaluation process. GLP-1s may be
-                  considered if clinically appropriate, based on your medical
-                  intake and physician judgment.
-                </p>
-              </details>
-              <details className="group border border-patient-200/60 bg-white">
-                <summary className="cursor-pointer list-none px-6 py-4 font-semibold text-patient-950 [&::-webkit-details-marker]:hidden">
-                  How long does the intake take?
-                </summary>
-                <p className="border-t border-patient-200/40 px-6 pb-4 pt-2 text-base leading-relaxed text-patient-800">
-                  Typically 20-45 minutes. It is intentionally thorough for
-                  safety screening and clinical decision-making.
-                </p>
-              </details>
-              <details className="group border border-patient-200/60 bg-white">
-                <summary className="cursor-pointer list-none px-6 py-4 font-semibold text-patient-950 [&::-webkit-details-marker]:hidden">
-                  Is this just coaching?
-                </summary>
-                <p className="border-t border-patient-200/40 px-6 pb-4 pt-2 text-base leading-relaxed text-patient-800">
-                  No. This is a physician-led clinical program. Coaching-style
-                  support may be part of your plan, but medical decisions are
-                  made by a licensed clinician.
-                </p>
-              </details>
-              <details className="group border border-patient-200/60 bg-white">
-                <summary className="cursor-pointer list-none px-6 py-4 font-semibold text-patient-950 [&::-webkit-details-marker]:hidden">
-                  Where is this available?
-                </summary>
-                <p className="border-t border-patient-200/40 px-6 pb-4 pt-2 text-base leading-relaxed text-patient-800">
-                  Currently available in {STATE_LIST}. Care is provided where
-                  permitted by law.
-                </p>
-              </details>
-              <details className="group border border-patient-200/60 bg-white">
-                <summary className="cursor-pointer list-none px-6 py-4 font-semibold text-patient-950 [&::-webkit-details-marker]:hidden">
-                  Can I cancel anytime?
-                </summary>
-                <p className="border-t border-patient-200/40 px-6 pb-4 pt-2 text-base leading-relaxed text-patient-800">
-                  Yes. Cancel from your account. Your membership remains active
-                  through the end of your billing period.
-                </p>
-              </details>
-              <details className="group border border-patient-200/60 bg-white">
-                <summary className="cursor-pointer list-none px-6 py-4 font-semibold text-patient-950 [&::-webkit-details-marker]:hidden">
-                  Is this insurance-covered?
-                </summary>
-                <p className="border-t border-patient-200/40 px-6 pb-4 pt-2 text-base leading-relaxed text-patient-800">
-                  {INSURANCE_POLICY}
-                </p>
-              </details>
-            </div>
-          </div>
+          <h2
+            id="faq-heading"
+            className="text-center text-2xl font-semibold tracking-tight text-patient-950 md:text-3xl"
+          >
+            FAQ
+          </h2>
+          <ul className="faq-items" role="list">
+            <li>
+              <h3>Will I get a GLP-1 if I join?</h3>
+              <p>
+                No. Joining starts the evaluation process. GLP-1s may be
+                considered if clinically appropriate, based on your medical
+                intake and physician judgment.
+              </p>
+            </li>
+            <li>
+              <h3>How long does the intake take?</h3>
+              <p>
+                Typically 20-45 minutes. It is intentionally thorough for
+                safety screening and clinical decision-making.
+              </p>
+            </li>
+            <li>
+              <h3>Is this just coaching?</h3>
+              <p>
+                No. This is a physician-led clinical program. Coaching-style
+                support may be part of your plan, but medical decisions are
+                made by a licensed clinician.
+              </p>
+            </li>
+            <li>
+              <h3>Where is this available?</h3>
+              <p>
+                Currently available in {STATE_LIST}. Care is provided where
+                permitted by law.
+              </p>
+            </li>
+            <li>
+              <h3>Can I cancel anytime?</h3>
+              <p>
+                Yes. Cancel from your account. Your membership remains active
+                through the end of your billing period.
+              </p>
+            </li>
+            <li>
+              <h3>Is this insurance-covered?</h3>
+              <p>{INSURANCE_POLICY}</p>
+            </li>
+          </ul>
         </section>
 
-        {/* 12) Final CTA */}
+        {/* 12) CTA - Your weight shouldn't wait */}
         <section
-          className="border-t border-patient-200/50 bg-gradient-to-br from-patient-200/40 via-patient-100/50 to-doctor-100/50 px-4 py-16 md:px-16 md:py-24"
-          aria-labelledby="final-cta-heading"
+          className="relative grid grid-cols-1 gap-0 overflow-hidden border-t border-patient-200/50 md:grid-cols-2"
+          style={{
+            background: "linear-gradient(135deg, #ffc3c3 0%, #c8e4f9 100%)",
+          }}
+          aria-labelledby="cta-heading"
         >
-          <div className="mx-auto max-w-[90rem] text-center">
+          <div className="flex flex-col justify-center gap-6 px-4 py-16 md:px-12 md:py-20 lg:px-16">
             <h2
-              id="final-cta-heading"
-              className="text-2xl font-semibold tracking-tight text-patient-950 md:text-3xl"
+              id="cta-heading"
+              className="text-center text-3xl font-semibold leading-tight tracking-tight text-patient-950 md:text-left md:text-4xl lg:text-[3.5rem]"
             >
-              Start your physician-led obesity program today
+              Your weight shouldn&apos;t wait.
             </h2>
-            <p className="mx-auto mt-4 max-w-prose text-lg leading-relaxed text-patient-800">
-              Structured evaluation, clear next steps, and ongoing follow-ups
-              designed for sustainable progress.
-            </p>
-            <p className="mt-10">
+            <div className="flex justify-center md:justify-start">
               <Link
                 href="/checkout"
                 className="inline-flex items-center justify-center rounded-full border border-patient-900 bg-patient-900 px-8 py-4 text-base font-medium text-white no-underline transition hover:bg-patient-800 focus:outline-none focus:ring-2 focus:ring-patient-500 focus:ring-offset-2"
               >
                 Start membership
               </Link>
-            </p>
-            <p className="mt-6 text-sm text-patient-700">
-              Not for emergencies. Results vary. Treatment options depend on
-              clinical evaluation.
-            </p>
+            </div>
+          </div>
+          <div
+            className="relative flex items-center justify-center"
+            style={{ minHeight: "clamp(320px, 50vw, 560px)" }}
+          >
+            <div
+              className="absolute inset-0 opacity-20"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 24H36' stroke='white' stroke-width='2'/%3E%3Cpath d='M24 12V36' stroke='white' stroke-width='2'/%3E%3C/svg%3E")`,
+                backgroundSize: "48px 48px",
+              }}
+            />
+            <img
+              src="/img/app.png"
+              alt="Sigma app on smartphone"
+              className="relative block h-auto max-h-[560px] w-auto max-w-full object-contain"
+            />
           </div>
         </section>
 
