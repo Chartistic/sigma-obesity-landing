@@ -6,8 +6,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="min-h-screen font-sans">{children}</body>
+    <html lang="en" style={{ fontStyle: "normal" }}>
+      <body className="min-h-screen font-sans not-italic" style={{ fontStyle: "normal" }}>
+        {children}
+      </body>
     </html>
   );
 }

@@ -9,12 +9,11 @@
   body {
     @apply antialiased text-patient-950 bg-white;
     font-feature-settings: "rlig" 1, "calt" 1;
-    font-synthesis: none; /* prevent browser from synthesizing italic/bold */
+    font-synthesis: none;
   }
-  /* Force no italic anywhere on the page */
-  *,
-  *::before,
-  *::after {
-    font-style: normal !important;
-  }
+}
+
+/* No italic anywhere - loaded last, no layer so it overrides everything */
+html, body, body *, body *::before, body *::after {
+  font-style: normal !important;
 }
