@@ -9,16 +9,11 @@
   body {
     @apply antialiased text-patient-950 bg-white;
     font-feature-settings: "rlig" 1, "calt" 1;
-    font-style: normal;
   }
-  body * {
-    font-style: inherit;
-  }
-  html {
-    font-style: normal;
-  }
-  /* Only allow italic where explicitly requested (e.g. testimonials) */
-  .italic {
-    font-style: italic;
+  /* Force no italic anywhere on the page */
+  *,
+  *::before,
+  *::after {
+    font-style: normal !important;
   }
 }

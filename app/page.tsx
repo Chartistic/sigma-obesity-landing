@@ -509,7 +509,7 @@ export default function Home() {
                   key={i}
                   className="rounded-xl border border-patient-200/60 bg-white p-6"
                 >
-                  <p className="text-base leading-relaxed text-patient-800 italic">
+                  <p className="text-base leading-relaxed text-patient-800">
                     &ldquo;{quote}&rdquo;
                   </p>
                 </blockquote>
