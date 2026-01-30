@@ -30,6 +30,37 @@ export default function Home() {
         Skip to content
       </a>
 
+      <header
+        role="banner"
+        className="sticky top-0 z-50 border-b border-patient-200/50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80"
+      >
+        <div className="mx-auto flex max-w-[90rem] items-center justify-between px-4 py-4 md:px-16">
+          <Link href="/" className="block" aria-label="Sigma homepage">
+            <img
+              src="/sigma-logo-assets/sigma-logo-full.png"
+              alt="Sigma"
+              width={120}
+              height={40}
+              className="h-8 w-auto"
+            />
+          </Link>
+          <nav className="flex items-center gap-6 text-sm" aria-label="Main navigation">
+            <Link
+              href="/terms"
+              className="text-patient-800 no-underline transition hover:text-patient-950"
+            >
+              Terms
+            </Link>
+            <Link
+              href="/privacy"
+              className="text-patient-800 no-underline transition hover:text-patient-950"
+            >
+              Privacy
+            </Link>
+          </nav>
+        </div>
+      </header>
+
       <main id="main" className="min-h-screen">
         {/* 2) Hero */}
         <section
