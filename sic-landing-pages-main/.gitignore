@@ -1,0 +1,50 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS folder attributes
+._*
+
+# macOS Trash
+.Trashes
+
+# macOS Spotlight files
+.Spotlight-V100
+
+# macOS volume files
+.VolumeIcon.icns
+
+# macOS Time Machine files
+.Backup*
+
+# Node modules (if using npm/yarn)
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Sass cache
+.sass-cache/
+*.css.map
+
+# Logs
+*.log
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+deploy.sh

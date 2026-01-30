@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Doctor Copilot Demo - Sigma Clinic</title>
+  <meta name="description" content="Demo of AI doctor copilot for General Atlantic India use case">
+  <link rel="icon" type="image/svg+xml" href="sigma-favicon/favicon.svg">
+  <link rel="icon" type="image/png" href="sigma-favicon/favicon.png">
+  <link rel="stylesheet" href="demo-copilot.css">
+</head>
+<body>
+  <div class="demo-container">
+    <!-- Controls -->
+    <header class="demo-controls">
+      <div class="controls-inner">
+        <h1 class="demo-title">AI Doctor Copilot Demo</h1>
+        <div class="controls-buttons">
+          <button id="start-btn" class="btn btn-primary">Start Demo</button>
+          <button id="pause-btn" class="btn btn-secondary" disabled>Pause</button>
+          <button id="restart-btn" class="btn btn-secondary" disabled>Restart</button>
+          <div class="speed-control">
+            <label for="speed-select">Speed:</label>
+            <select id="speed-select" class="speed-select">
+              <option value="4">Normal</option>
+              <option value="1">Fast</option>
+              <option value="2">Slow</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Demo Area -->
+    <main class="demo-main">
+      <!-- Left: Live Transcript -->
+      <section class="demo-transcript" id="transcript-section">
+        <div class="section-header">
+          <h2>Live Consultation Transcript</h2>
+          <div class="timestamp">2:14 AM • Tier-3 Hospital, Night Shift</div>
+        </div>
+        <div class="transcript-messages" id="transcript-messages">
+          <!-- Messages will be added here by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Right: AI Copilot -->
+      <section class="demo-copilot" id="copilot-section">
+        <!-- AI Guidance -->
+        <div class="copilot-section copilot-guidance" id="guidance-section">
+          <div class="section-header">
+            <h2>AI Guidance</h2>
+          </div>
+          <div class="guidance-content" id="guidance-content">
+            <p class="placeholder">Waiting for consultation to begin...</p>
+          </div>
+        </div>
+
+        <!-- AI Clinical Reasoning -->
+        <div class="copilot-section copilot-reasoning" id="reasoning-section">
+          <div class="section-header">
+            <h2>AI Clinical Reasoning</h2>
+          </div>
+          <div class="reasoning-content" id="reasoning-content">
+            <p class="placeholder">Waiting for consultation to begin...</p>
+          </div>
+        </div>
+
+        <!-- Summary & Plan -->
+        <div class="copilot-section copilot-summary hidden" id="summary-section">
+          <div class="section-header">
+            <h2>Summary & Plan</h2>
+          </div>
+          <div class="summary-content" id="summary-content">
+            <p class="placeholder">Summary will appear at the end of consultation...</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="demo-copilot.js"></script>
+</body>
+</html>
+

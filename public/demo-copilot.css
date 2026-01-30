@@ -1,0 +1,609 @@
+/* Demo Copilot Styles */
+
+/* Font Loading */
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('fonts/MonaSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('fonts/MonaSans-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('fonts/MonaSans-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('fonts/MonaSans-SemiBoldItalic.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('fonts/MonaSans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('fonts/MonaSans-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --color-doctor-50: #f5fafe;
+  --color-doctor-100: #e6f2fc;
+  --color-doctor-200: #c8e4f9;
+  --color-doctor-300: #87ccf4;
+  --color-doctor-400: #52b0db;
+  --color-doctor-500: #4494b8;
+  --color-doctor-600: #357793;
+  --color-doctor-700: #285d73;
+  --color-doctor-800: #1a4252;
+  --color-doctor-900: #0f2229;
+  --color-patient-50: #fef8f8;
+  --color-patient-100: #fde9ea;
+  --color-patient-200: #ffc3c3;
+  --color-patient-300: #f79e9f;
+  --color-patient-400: #ef7b80;
+  --color-patient-500: #e4505c;
+  --color-patient-600: #b54450;
+  --color-patient-700: #843c43;
+  --color-patient-800: #5b3136;
+  --color-patient-900: #282525;
+  --color-gray-50: #f4f5f7;
+  --color-gray-100: #e3e5ea;
+  --color-gray-200: #c5c9d2;
+  --color-gray-300: #a8aebb;
+  --color-gray-400: #8a91a0;
+  --color-gray-500: #727783;
+  --color-gray-600: #565961;
+  --color-gray-700: #434449;
+  --color-gray-800: #2d2e31;
+  --color-gray-900: #171818;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  
+  --font-family: "Mona Sans", system-ui, sans-serif;
+  --radius-small: 0.25rem;
+  --radius-medium: 0.5rem;
+  --radius-large: 1rem;
+  --transition: 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-gray-900);
+  background: var(--color-gray-50);
+  min-height: 100vh;
+}
+
+.demo-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Controls */
+.demo-controls {
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-200);
+  padding: 1rem 2rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.controls-inner {
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.demo-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-gray-900);
+  margin: 0;
+}
+
+.controls-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-medium);
+  background: var(--color-white);
+  color: var(--color-gray-900);
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--color-gray-50);
+  border-color: var(--color-gray-400);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--color-doctor-500);
+  color: var(--color-white);
+  border-color: var(--color-doctor-500);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-doctor-600);
+  border-color: var(--color-doctor-600);
+}
+
+.btn-secondary {
+  background: var(--color-gray-100);
+  border-color: var(--color-gray-300);
+}
+
+.speed-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.speed-control label {
+  font-size: 0.875rem;
+  color: var(--color-gray-600);
+}
+
+.speed-select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-medium);
+  background: var(--color-white);
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+/* Main Demo Area */
+.demo-main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Transcript Section (Left - 1/3) */
+.demo-transcript {
+  flex: 0 0 33.333%;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border-radius: var(--radius-large);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.section-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-gray-200);
+  background: var(--color-gray-50);
+}
+
+.section-header h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-gray-900);
+  margin: 0 0 0.25rem 0;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: var(--color-gray-500);
+}
+
+.transcript-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.transcript-message {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: var(--radius-medium);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.transcript-message--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.transcript-message--doctor {
+  background: var(--color-doctor-50);
+  border-right: 3px solid var(--color-doctor-500);
+  align-self: flex-end;
+  max-width: 85%;
+  margin-left: auto;
+}
+
+.transcript-message--patient {
+  background: var(--color-patient-50);
+  border-left: 3px solid var(--color-patient-500);
+  align-self: flex-start;
+  max-width: 85%;
+  margin-right: auto;
+}
+
+.transcript-speaker {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-gray-600);
+}
+
+.transcript-message--doctor .transcript-speaker {
+  color: var(--color-doctor-700);
+}
+
+.transcript-message--patient .transcript-speaker {
+  color: var(--color-patient-700);
+}
+
+.transcript-text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-gray-900);
+}
+
+/* Copilot Section (Right - 2/3) */
+.demo-copilot {
+  flex: 0 0 66.667%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.copilot-section {
+  background: var(--color-white);
+  border-radius: var(--radius-large);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.copilot-section.hidden {
+  display: none;
+}
+
+/* Guidance section: 1/6 of space - always visible when not hidden */
+.copilot-guidance:not(.hidden) {
+  flex: 0 0 16.667%;
+  min-height: 0;
+}
+
+/* Reasoning section: remaining space (5/6) when guidance is visible */
+.copilot-reasoning:not(.hidden) {
+  flex: 1;
+  min-height: 0;
+}
+
+/* Summary section: 5/6 of space when visible (replaces reasoning) */
+.copilot-summary:not(.hidden) {
+  flex: 1;
+  min-height: 0;
+}
+
+.copilot-section .section-header {
+  flex-shrink: 0;
+}
+
+.copilot-section .section-header h2 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.reasoning-content,
+.guidance-content,
+.summary-content {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  transition: background-color 0.3s ease;
+}
+
+.guidance-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.guidance-content .guidance-current {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.guidance-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.guidance-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-gray-300);
+  border-top-color: var(--color-doctor-500);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.reasoning-content.updated,
+.guidance-content.updated,
+.summary-content.updated {
+  background-color: var(--color-doctor-50);
+}
+
+.placeholder {
+  color: var(--color-gray-400);
+  font-style: italic;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* Reasoning List */
+.reasoning-list,
+.guidance-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reasoning-list li,
+.guidance-list li {
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-gray-800);
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.reasoning-list li:last-child,
+.guidance-list li:last-child {
+  border-bottom: none;
+}
+
+.reasoning-list li.spacer,
+.guidance-list li.spacer {
+  height: 0.75rem;
+  padding: 0;
+  border: none;
+}
+
+.reasoning-list li:has-text("⬆️") {
+  color: var(--color-doctor-700);
+  font-weight: 500;
+}
+
+/* Summary Section */
+.summary-section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.summary-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.summary-section h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-gray-900);
+  margin: 0 0 0.75rem 0;
+}
+
+.summary-section h4 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-gray-700);
+  margin: 1rem 0 0.5rem 0;
+}
+
+.summary-section p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-gray-800);
+  margin: 0 0 0.75rem 0;
+}
+
+.summary-section ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.summary-section li {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-gray-800);
+  margin: 0.25rem 0;
+}
+
+.medication-item {
+  background: var(--color-gray-50);
+  padding: 0.75rem;
+  border-radius: var(--radius-small);
+  margin: 0.5rem 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.medication-item strong {
+  color: var(--color-gray-900);
+}
+
+.medication-item small {
+  color: var(--color-gray-600);
+  font-size: 0.8125rem;
+}
+
+.prescription-section {
+  background: var(--color-doctor-50);
+  border: 2px solid var(--color-doctor-300);
+}
+
+.prescription-content {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.prescription-content p {
+  margin: 0.5rem 0;
+}
+
+.prescription-meds {
+  background: var(--color-white);
+  padding: 1rem;
+  border-radius: var(--radius-small);
+  margin: 1rem 0;
+}
+
+.prescription-instructions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-doctor-300);
+  font-size: 0.8125rem;
+  color: var(--color-gray-700);
+}
+
+/* Scrollbar Styling */
+.transcript-messages::-webkit-scrollbar,
+.reasoning-content::-webkit-scrollbar,
+.guidance-content::-webkit-scrollbar,
+.summary-content::-webkit-scrollbar,
+.demo-copilot::-webkit-scrollbar {
+  width: 8px;
+}
+
+.transcript-messages::-webkit-scrollbar-track,
+.reasoning-content::-webkit-scrollbar-track,
+.guidance-content::-webkit-scrollbar-track,
+.summary-content::-webkit-scrollbar-track,
+.demo-copilot::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+  border-radius: 4px;
+}
+
+.transcript-messages::-webkit-scrollbar-thumb,
+.reasoning-content::-webkit-scrollbar-thumb,
+.guidance-content::-webkit-scrollbar-thumb,
+.summary-content::-webkit-scrollbar-thumb,
+.demo-copilot::-webkit-scrollbar-thumb {
+  background: var(--color-gray-300);
+  border-radius: 4px;
+}
+
+.transcript-messages::-webkit-scrollbar-thumb:hover,
+.reasoning-content::-webkit-scrollbar-thumb:hover,
+.guidance-content::-webkit-scrollbar-thumb:hover,
+.summary-content::-webkit-scrollbar-thumb:hover,
+.demo-copilot::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-400);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .demo-main {
+    flex-direction: column;
+  }
+  
+  .demo-transcript {
+    flex: 0 0 33.333%;
+  }
+  
+  .demo-copilot {
+    flex: 0 0 66.667%;
+  }
+}
+
+@media (max-width: 768px) {
+  .controls-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .controls-buttons {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  
+  .demo-main {
+    padding: 0.5rem;
+  }
+  
+  .transcript-message--doctor,
+  .transcript-message--patient {
+    max-width: 95%;
+  }
+}
+

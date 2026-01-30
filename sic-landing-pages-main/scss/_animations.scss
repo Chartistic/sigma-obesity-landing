@@ -1,0 +1,28 @@
+
+
+
+
+
+@keyframes gradient-swipe {
+	0% {
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: -200% 0%;
+	}
+}
+
+@property --gradients-border-gradient-direction {
+	syntax: '<angle>';
+	initial-value: 135deg;
+	inherits: false;
+}
+
+@keyframes gradient-rotate {
+	0% {
+		--gradients-border-gradient-direction: 135deg;
+	}
+	100% {
+		--gradients-border-gradient-direction: 495deg;
+	}
+}

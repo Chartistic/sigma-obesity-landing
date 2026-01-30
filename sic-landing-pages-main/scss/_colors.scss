@@ -1,0 +1,56 @@
+.patient-gradient {
+  --color-gradients-patient-gradient: linear-gradient(
+    var(--gradients-patient-gradient-direction),
+    var(--gradients-patient-gradient-stop-1-color) var(--gradients-patient-gradient-stop-1-position),
+    var(--gradients-patient-gradient-stop-2-color) var(--gradients-patient-gradient-stop-2-position)
+  );
+  background: var(--color-gradients-patient-gradient);
+}
+.doctor-gradient {
+  --color-gradients-doctor-gradient: linear-gradient(
+    var(--gradients-doctor-gradient-direction),
+    var(--gradients-doctor-gradient-stop-1-color) var(--gradients-doctor-gradient-stop-1-position),
+    var(--gradients-doctor-gradient-stop-2-color) var(--gradients-doctor-gradient-stop-2-position)
+  );
+  background: var(--color-gradients-doctor-gradient);
+}
+.bg-gradient-1 {
+  --color-gradients-bg-gradient-1: linear-gradient(
+    var(--gradients-bg-gradient-1-direction),
+    var(--gradients-bg-gradient-1-stop-1-color) var(--gradients-bg-gradient-1-stop-1-position),
+    var(--gradients-bg-gradient-1-stop-2-color) var(--gradients-bg-gradient-1-stop-2-position)
+  );
+  background: var(--color-gradients-bg-gradient-1);
+}
+.bg-gradient-2 {
+  --color-gradients-bg-gradient-2: linear-gradient(
+    var(--gradients-bg-gradient-2-direction),
+    var(--gradients-bg-gradient-2-stop-1-color) var(--gradients-bg-gradient-2-stop-1-position),
+    var(--gradients-bg-gradient-2-stop-2-color) var(--gradients-bg-gradient-2-stop-2-position)
+  );
+  background: var(--color-gradients-bg-gradient-2);
+}
+.bg-gradient-3 {
+  --color-gradients-bg-gradient-3: linear-gradient(
+    var(--gradients-bg-gradient-3-direction),
+    var(--gradients-bg-gradient-3-stop-1-color) var(--gradients-bg-gradient-3-stop-1-position),
+    var(--gradients-bg-gradient-3-stop-2-color) var(--gradients-bg-gradient-3-stop-2-position)
+  );
+  background: var(--color-gradients-bg-gradient-3);
+}
+.border-patient-gradient {
+    border-style: solid;
+    border-width: var(--border-width);
+    border-color: var(--gradients-patient-gradient-stop-1-color);
+    border-image: linear-gradient(
+      var(--gradients-border-gradient-direction),
+      var(--gradients-patient-gradient-stop-1-color) 30%,
+      var(--gradients-patient-gradient-stop-2-color) 70%
+    );
+    border-image-slice: 1;
+    border-image-width: 1;
+    border-image-outset: 0;
+    &.animated {
+      animation: gradient-rotate 10s var(--transition-ease-out-quad) infinite;
+    }
+}

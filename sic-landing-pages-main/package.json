@@ -1,0 +1,35 @@
+{
+  "name": "sic-landing-pages",
+  "version": "1.0.0",
+  "description": "Accessible Landing Pages for Sigma Clinic with SCSS, JS, HTML",
+  "author": {
+    "name": "Monospace Design",
+    "email": "digital@monospace.design",
+    "url": "https://monospace.design"
+  },
+  "scripts": {
+    "dev": "npm-run-all --parallel scss:watch js:watch serve",
+    "build": "npm-run-all scss:build js:build copy:css copy:js copy:map",
+    "build:nosource": "npm-run-all scss:build-nosource js:build copy:css copy:js",
+    "scss:watch": "sass --watch scss/style.scss public/style.css --style=expanded --no-source-map",
+    "scss:build-nosource": "sass scss/style.scss dist/style.css --no-source-map --style=compressed && postcss dist/style.css --use autoprefixer -o dist/style.css",
+    "scss:build": "sass scss/style.scss dist/style.css --style=compressed && postcss dist/style.css --use autoprefixer -o dist/style.css",
+    "js:watch": "esbuild js/main.js --bundle --outfile=dist/main.js --watch",
+    "js:build": "esbuild js/main.js --bundle --minify --outfile=dist/main.js",
+    "copy:css": "cp dist/style.css public/style.css",
+    "copy:js": "cp dist/main.js public/main.js",
+    "copy:map": "cp dist/style.css.map public/style.css.map",
+    "serve": "live-server public"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "esbuild": "^0.23.0",
+    "live-server": "^1.2.2",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^11.0.0",
+    "sass": "^1.77.0",
+    "stylelint": "^16.8.0",
+    "stylelint-config-standard-scss": "^13.0.0",
+    "eslint": "^9.10.0"
+  }
+}

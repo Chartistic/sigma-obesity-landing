@@ -1,0 +1,15 @@
+// Utility classes for quick reuse across the project
+
+.u-hidden {
+    display: none !important;
+}
+.u-hidden-mobile {
+    @media screen and (max-width: 767px) {
+        display: none !important;
+    }
+}
+.u-hidden-desktop {
+    @media screen and (min-width: 768px) {
+        display: none !important;
+    }
+}

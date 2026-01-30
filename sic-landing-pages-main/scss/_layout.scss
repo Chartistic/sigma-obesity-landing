@@ -1,0 +1,51 @@
+section {
+  padding: var(--space-small);
+}
+
+/* Container logic (flat markup) */
+:root {
+  --container-pad: clamp(1rem, 2vw, 2rem);
+  --container-narrow: 65ch;                 /* Readable for body text */
+  --container-default: min(90rem, 92vw);    /* ~1440px cap */
+  --container-wide: min(110rem, 96vw);      /* ~1760px cap for grids/FAQs */
+}
+
+/* Every direct child of main is a container */
+main > * {
+  max-width: var(--container-max, var(--container-default));
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* Width switcher via data attributes */
+main > *[data-width="narrow"]  { --container-max: calc(var(--container-narrow) + var(--padding-global)); }
+main > *[data-width="default"] { --container-max: var(--container-default); }
+main > *[data-width="wide"]    { --container-max: var(--container-wide); }
+main > *[data-width="full"]    { --container-max: 100vw; padding-inline: 0; }
+
+/* Typical flow for text sections (you may already have this in _base.scss) */
+.flow > * + * { margin-block-start: clamp(.75rem, 1.5vw, 1.25rem); }
+
+section.flow {
+  padding: var(--space-large) 0;
+}
+.legal-page section.flow {
+    padding: calc(var(--space-xlarge) * 1.25) var(--padding-global);
+    
+    @media screen and (min-width: 768px) {
+      padding: var(--space-xlarge) var(--padding-global);
+    }
+}
+
+/* Optional: full width for individual media without wrapper */
+figure[data-bleed], img[data-bleed], .bleed {
+  width: 100vw;
+  max-width: 100vw;
+  margin-inline: calc(50% - 50vw);
+}
+
+.container {
+  max-width: var(--container-max, var(--container-default));
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}

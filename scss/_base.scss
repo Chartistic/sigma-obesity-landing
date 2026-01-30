@@ -1,0 +1,53 @@
+/* Utility: .debug - adds a border to all children */
+.debug * {
+  border: 1px solid #0001 !important;
+  &:hover {
+    border: 1px solid #f0ff !important;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  font-family: var(--font-family);
+  font-size: var(--font-base);
+  line-height: var(--line-height);
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  color: var(--theme-text);
+  background: var(--theme-background);
+}
+:focus-visible {
+  outline: 2px solid var(--theme-focus);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+a {
+  color: var(--theme-link);
+  transition: all var(--transition-duration) var(--transition-ease-out-quad);
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    color: var(--theme-link-hover);
+  }
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 24;
+}
