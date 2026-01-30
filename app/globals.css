@@ -98,7 +98,7 @@ html *::after {
   object-fit: cover;
   object-position: 10% 50%;
 }
-/* FAQ - index-en style grid */
+/* FAQ - index-en style grid (gap+background ensures visible dividers) */
 .faq-section {
   display: flex;
   flex-direction: column;
@@ -110,20 +110,17 @@ html *::after {
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
+  gap: 1px;
   max-width: 64rem;
   margin-inline: auto;
-  border: 1px solid #ffc3c3;
-  background: #fff;
+  padding: 1px;
+  background: #f79e9f;
+  border: 1px solid #f79e9f;
 }
 .faq-items li {
   margin: 0;
   padding: 1rem;
-  border-bottom: 1px solid #ffc3c3;
-  border-right: 1px solid #ffc3c3;
-}
-.faq-items li:last-child {
-  border-bottom: none;
-  border-right: none;
+  background: #fff;
 }
 .faq-items li h3 {
   font-size: 1rem;
@@ -137,42 +134,16 @@ html *::after {
   margin: 0;
   color: #5b3136;
 }
-/* 1-col: only bottom borders, no right */
-@media (max-width: 767px) {
-  .faq-items li {
-    border-right: none;
-  }
-}
-/* 2-col: vertical between cols, horizontal between rows */
 @media (min-width: 768px) {
   .faq-items {
     grid-template-columns: repeat(2, 1fr);
   }
-  .faq-items li {
-    border-right: 1px solid #ffc3c3;
-    border-bottom: 1px solid #ffc3c3;
-  }
-  .faq-items li:nth-child(even) {
-    border-right: none;
-  }
-  .faq-items li:nth-child(n+5) {
-    border-bottom: none;
-  }
 }
-/* 3-col: full grid with vertical and horizontal dividers */
 @media (min-width: 1024px) {
   .faq-items {
     grid-template-columns: repeat(3, 1fr);
   }
   .faq-items li {
     padding: 1.5rem;
-    border-right: 1px solid #ffc3c3;
-    border-bottom: 1px solid #ffc3c3;
-  }
-  .faq-items li:nth-child(3n) {
-    border-right: none;
-  }
-  .faq-items li:nth-child(n+4) {
-    border-bottom: none;
   }
 }
