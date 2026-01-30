@@ -5,6 +5,7 @@ const monaSans = localFont({
   src: "../public/fonts/MonaSans-Variable.woff2",
   variable: "--font-mona",
   display: "swap",
+  style: "normal",
 });
 
 export default function RootLayout({

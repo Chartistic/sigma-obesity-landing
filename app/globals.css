@@ -7,7 +7,7 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply antialiased text-patient-950 bg-white;
+    @apply antialiased font-normal text-patient-950 bg-white;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
