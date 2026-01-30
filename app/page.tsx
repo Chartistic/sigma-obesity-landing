@@ -30,22 +30,6 @@ export default function Home() {
         Skip to content
       </a>
 
-      {/* 1) Sticky top bar */}
-      <header
-        role="banner"
-        className="sticky top-0 z-50 border-b border-patient-200/50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80"
-      >
-        <div className="mx-auto max-w-[90rem] px-4 py-3 md:px-16">
-          <p className="text-center text-sm font-medium text-patient-900 md:text-base">
-            Physician-led obesity care - structured evaluation, ongoing support.
-          </p>
-          <p className="mt-1 text-center text-xs text-patient-600">
-            Not for emergencies. If you have urgent symptoms, call 911 or go to
-            the nearest ER.
-          </p>
-        </div>
-      </header>
-
       <main id="main" className="min-h-screen">
         {/* 2) Hero */}
         <section
