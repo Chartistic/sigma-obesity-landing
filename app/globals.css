@@ -1,29 +1,54 @@
+/* Minimal reset (replaces Tailwind preflight) - full control over font-style */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  font-style: normal !important;
+}
+
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  font-style: normal !important;
+  font-family: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-style: normal !important;
+  font-synthesis: none !important;
+}
+
+/* Tailwind (preflight disabled in config) */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-    font-style: normal !important;
-  }
-  body {
-    @apply antialiased text-patient-950 bg-white;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    font-style: normal !important;
-    font-synthesis: none;
-  }
-  /* Override any italic from Tailwind or defaults */
-  em, i {
-    font-style: normal !important;
-  }
+/* Base styles */
+html {
+  scroll-behavior: smooth;
 }
 
-/* No italic anywhere - unlayered so it wins over Tailwind layers */
-html, body, body *, body *::before, body *::after,
-em, i {
+body {
+  @apply antialiased text-patient-950 bg-white font-sans;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Force no italic - ID selector for maximum specificity */
+#obesity-app,
+#obesity-app *,
+#obesity-app *::before,
+#obesity-app *::after {
   font-style: normal !important;
 }
+
+html,
+html *,
+html *::before,
+html *::after {
+  font-style: normal !important;
+}
+
 * {
   font-synthesis: none !important;
 }

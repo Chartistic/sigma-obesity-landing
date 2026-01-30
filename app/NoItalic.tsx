@@ -3,9 +3,9 @@
 import { useLayoutEffect } from "react";
 
 const NO_ITALIC_CSS = `
-  html, body, body *, body *::before, body *::after,
-  em, i { font-style: normal !important; }
-  * { font-synthesis: none !important; }
+  #obesity-app,#obesity-app *,#obesity-app *::before,#obesity-app *::after,
+  html,body,body *,body *::before,body *::after,em,i{font-style:normal!important}
+  *{font-synthesis:none!important}
 `;
 
 export function NoItalic() {

@@ -11,6 +11,7 @@ const inter = Inter({
 });
 
 const noItalicCSS = `
+  #obesity-app,#obesity-app *,#obesity-app *::before,#obesity-app *::after,
   html,body,body *,body *::before,body *::after,em,i{font-style:normal!important}
   *{font-synthesis:none!important}
 `;
@@ -25,7 +26,7 @@ export default function RootLayout({
       <head>
         <style dangerouslySetInnerHTML={{ __html: noItalicCSS }} />
       </head>
-      <body className="min-h-screen font-sans" style={{ fontStyle: "normal" }}>
+      <body id="obesity-app" className="min-h-screen font-sans" style={{ fontStyle: "normal" }}>
         <NoItalic />
         {children}
       </body>
