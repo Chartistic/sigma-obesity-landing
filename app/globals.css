@@ -7,7 +7,18 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply antialiased font-normal text-patient-950 bg-white;
+    @apply antialiased text-patient-950 bg-white;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-style: normal;
+  }
+  body * {
+    font-style: inherit;
+  }
+  html {
+    font-style: normal;
+  }
+  /* Only allow italic where explicitly requested (e.g. testimonials) */
+  .italic {
+    font-style: italic;
   }
 }
