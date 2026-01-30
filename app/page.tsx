@@ -102,29 +102,6 @@ export default function Home() {
                   not clinically appropriate for the program, you can request a
                   refund within {REFUND_DAYS} days after completing intake.
                 </p>
-                <ul
-                  className="mt-10 flex flex-col gap-3 text-left text-sm text-patient-700 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6 lg:justify-start"
-                  role="list"
-                >
-                  <li className="flex items-center gap-2">
-                    <span className="text-patient-400" aria-hidden>
-                      —
-                    </span>
-                    Led by Dr. Gauri Behari, U.S.-licensed physician (Phoenix, AZ)
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-patient-400" aria-hidden>
-                      —
-                    </span>
-                    Secure handling of your information
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-patient-400" aria-hidden>
-                      —
-                    </span>
-                    Built for continuity, not one-off visits
-                  </li>
-                </ul>
               </div>
               <div className="flex justify-center lg:col-span-1 lg:justify-end">
                 <img
@@ -150,33 +127,13 @@ export default function Home() {
               Does this sound familiar?
             </h2>
             <ul
-              className="mx-auto mt-10 max-w-prose space-y-4 text-lg leading-relaxed text-patient-800"
+              className="mx-auto mt-10 max-w-prose list-disc space-y-4 pl-6 text-lg leading-relaxed text-patient-800"
               role="list"
             >
-              <li className="flex gap-3">
-                <span className="text-patient-400" aria-hidden>
-                  —
-                </span>
-                I keep losing and regaining the same weight.
-              </li>
-              <li className="flex gap-3">
-                <span className="text-patient-400" aria-hidden>
-                  —
-                </span>
-                I'm exhausted from starting over.
-              </li>
-              <li className="flex gap-3">
-                <span className="text-patient-400" aria-hidden>
-                  —
-                </span>
-                I want real medical support, not another generic plan.
-              </li>
-              <li className="flex gap-3">
-                <span className="text-patient-400" aria-hidden>
-                  —
-                </span>
-                If medications are an option, I want them handled responsibly.
-              </li>
+              <li>I keep losing and regaining the same weight.</li>
+              <li>I'm exhausted from starting over.</li>
+              <li>I want real medical support, not another generic plan.</li>
+              <li>If medications are an option, I want them handled responsibly.</li>
             </ul>
             <p className="mx-auto mt-10 max-w-prose text-lg leading-relaxed text-patient-800">
               If you've been stuck in the loop of hope, effort, and
@@ -229,7 +186,7 @@ export default function Home() {
               ].map((card) => (
                 <article
                   key={card.num}
-                  className="rounded-xl border border-patient-200/60 bg-white p-6 shadow-sm"
+                  className="border border-patient-200/60 bg-white p-6 shadow-sm"
                 >
                   <span
                     className="text-sm font-medium text-patient-500"
@@ -329,27 +286,27 @@ export default function Home() {
               What membership includes
             </h2>
             <div className="mx-auto mt-12 grid max-w-4xl gap-8 md:grid-cols-3">
-              <div className="rounded-xl border border-patient-200/60 bg-white p-6">
+              <div className="border border-patient-200/60 bg-white p-6">
                 <h3 className="text-lg font-semibold text-patient-950">
                   Medical evaluation
                 </h3>
-                <ul className="mt-4 space-y-2 text-base text-patient-800" role="list">
+                <ul className="mt-4 list-disc space-y-2 pl-6 text-base text-patient-800" role="list">
                   <li>Physician-led review of your history and goals</li>
                   <li>Structured intake designed for safety</li>
                   <li>Clinical decision-making by a licensed clinician</li>
                 </ul>
               </div>
-              <div className="rounded-xl border border-patient-200/60 bg-white p-6">
+              <div className="border border-patient-200/60 bg-white p-6">
                 <h3 className="text-lg font-semibold text-patient-950">
                   Personalized program
                 </h3>
-                <ul className="mt-4 space-y-2 text-base text-patient-800" role="list">
+                <ul className="mt-4 list-disc space-y-2 pl-6 text-base text-patient-800" role="list">
                   <li>Plan tailored to your biology and preferences</li>
                   <li>Nutrition, habits, and monitoring support</li>
                   <li>Ongoing follow-ups and adjustments</li>
                 </ul>
               </div>
-              <div className="rounded-xl border border-patient-200/60 bg-white p-6">
+              <div className="border border-patient-200/60 bg-white p-6">
                 <h3 className="text-lg font-semibold text-patient-950">
                   Medication options when appropriate
                 </h3>
@@ -382,21 +339,21 @@ export default function Home() {
               Who it's for / not for
             </h2>
             <div className="mx-auto mt-12 grid max-w-4xl gap-8 md:grid-cols-2">
-              <div className="rounded-xl border border-patient-200/60 bg-patient-50/50 p-6">
+              <div className="border border-patient-200/60 bg-patient-50/50 p-6">
                 <h3 className="text-lg font-semibold text-patient-950">
                   Who this is for
                 </h3>
-                <ul className="mt-4 space-y-2 text-base text-patient-800" role="list">
+                <ul className="mt-4 list-disc space-y-2 pl-6 text-base text-patient-800" role="list">
                   <li>Adults who want physician-led support for obesity or overweight</li>
                   <li>People who value a structured program with follow-ups</li>
                   <li>Those looking for responsible, evidence-based care</li>
                 </ul>
               </div>
-              <div className="rounded-xl border border-patient-200/60 bg-white p-6">
+              <div className="border border-patient-200/60 bg-white p-6">
                 <h3 className="text-lg font-semibold text-patient-950">
                   Who this is not for
                 </h3>
-                <ul className="mt-4 space-y-2 text-base text-patient-800" role="list">
+                <ul className="mt-4 list-disc space-y-2 pl-6 text-base text-patient-800" role="list">
                   <li>Emergencies or severe symptoms needing urgent care</li>
                   <li>Anyone seeking guaranteed prescriptions or guaranteed results</li>
                   <li>People unwilling to complete a medical intake (required for safe care)</li>
@@ -420,7 +377,7 @@ export default function Home() {
               Transparent membership pricing
             </h2>
             <div className="mx-auto mt-12 grid max-w-3xl gap-8 md:grid-cols-2">
-              <article className="rounded-xl border border-patient-200/60 bg-white p-8 shadow-sm">
+              <article className="border border-patient-200/60 bg-white p-8 shadow-sm">
                 <h3 className="text-xl font-semibold text-patient-950">
                   Core
                 </h3>
@@ -430,7 +387,7 @@ export default function Home() {
                     /month
                   </span>
                 </p>
-                <ul className="mt-6 space-y-3 text-base text-patient-800" role="list">
+                <ul className="mt-6 list-disc space-y-3 pl-6 text-base text-patient-800" role="list">
                   <li>Physician evaluation</li>
                   <li>Personalized plan</li>
                   <li>Ongoing follow-ups</li>
@@ -445,7 +402,7 @@ export default function Home() {
                   </Link>
                 </p>
               </article>
-              <article className="rounded-xl border-2 border-patient-300 bg-white p-8 shadow-sm">
+              <article className="border-2 border-patient-300 bg-white p-8 shadow-sm">
                 <h3 className="text-xl font-semibold text-patient-950">
                   Plus
                 </h3>
@@ -455,7 +412,7 @@ export default function Home() {
                     /month
                   </span>
                 </p>
-                <ul className="mt-6 space-y-3 text-base text-patient-800" role="list">
+                <ul className="mt-6 list-disc space-y-3 pl-6 text-base text-patient-800" role="list">
                   <li>Everything in Core, plus:</li>
                   <li>Priority scheduling windows (if applicable)</li>
                   <li>More frequent follow-ups</li>
@@ -500,10 +457,10 @@ export default function Home() {
               <p className="font-medium text-patient-900">
                 Why we do it this way:
               </p>
-              <ul className="space-y-2 pl-4" role="list">
-                <li>— It keeps the evaluation consistent and safety-first.</li>
+              <ul className="list-disc space-y-2 pl-6" role="list">
+                <li>It keeps the evaluation consistent and safety-first.</li>
                 <li>
-                  — It lets us deliver a thorough medical review without
+                  It lets us deliver a thorough medical review without
                   cutting corners.
                 </li>
               </ul>
@@ -531,7 +488,7 @@ export default function Home() {
               ].map((quote, i) => (
                 <blockquote
                   key={i}
-                  className="rounded-xl border border-patient-200/60 bg-white p-6"
+                  className="border border-patient-200/60 bg-white p-6"
                 >
                   <p className="text-base leading-relaxed text-patient-800">
                     &ldquo;{quote}&rdquo;
@@ -555,7 +512,7 @@ export default function Home() {
               FAQ
             </h2>
             <div className="mx-auto mt-12 max-w-2xl space-y-4">
-              <details className="group rounded-xl border border-patient-200/60 bg-white">
+              <details className="group border border-patient-200/60 bg-white">
                 <summary className="cursor-pointer list-none px-6 py-4 font-semibold text-patient-950 [&::-webkit-details-marker]:hidden">
                   Will I get a GLP-1 if I join?
                 </summary>
@@ -565,7 +522,7 @@ export default function Home() {
                   intake and physician judgment.
                 </p>
               </details>
-              <details className="group rounded-xl border border-patient-200/60 bg-white">
+              <details className="group border border-patient-200/60 bg-white">
                 <summary className="cursor-pointer list-none px-6 py-4 font-semibold text-patient-950 [&::-webkit-details-marker]:hidden">
                   How long does the intake take?
                 </summary>
@@ -574,7 +531,7 @@ export default function Home() {
                   safety screening and clinical decision-making.
                 </p>
               </details>
-              <details className="group rounded-xl border border-patient-200/60 bg-white">
+              <details className="group border border-patient-200/60 bg-white">
                 <summary className="cursor-pointer list-none px-6 py-4 font-semibold text-patient-950 [&::-webkit-details-marker]:hidden">
                   Is this just coaching?
                 </summary>
@@ -584,7 +541,7 @@ export default function Home() {
                   made by a licensed clinician.
                 </p>
               </details>
-              <details className="group rounded-xl border border-patient-200/60 bg-white">
+              <details className="group border border-patient-200/60 bg-white">
                 <summary className="cursor-pointer list-none px-6 py-4 font-semibold text-patient-950 [&::-webkit-details-marker]:hidden">
                   Where is this available?
                 </summary>
@@ -593,7 +550,7 @@ export default function Home() {
                   permitted by law.
                 </p>
               </details>
-              <details className="group rounded-xl border border-patient-200/60 bg-white">
+              <details className="group border border-patient-200/60 bg-white">
                 <summary className="cursor-pointer list-none px-6 py-4 font-semibold text-patient-950 [&::-webkit-details-marker]:hidden">
                   Can I cancel anytime?
                 </summary>
@@ -602,7 +559,7 @@ export default function Home() {
                   through the end of your billing period.
                 </p>
               </details>
-              <details className="group rounded-xl border border-patient-200/60 bg-white">
+              <details className="group border border-patient-200/60 bg-white">
                 <summary className="cursor-pointer list-none px-6 py-4 font-semibold text-patient-950 [&::-webkit-details-marker]:hidden">
                   Is this insurance-covered?
                 </summary>
@@ -651,49 +608,45 @@ export default function Home() {
           role="contentinfo"
         >
           <div className="mx-auto max-w-[90rem]">
-            <nav
-              className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm"
-              aria-label="Footer navigation"
-            >
-              <Link
-                href="/terms"
-                className="text-patient-200 underline underline-offset-2 hover:text-white"
-              >
-                Terms
+            <div className="flex flex-col gap-8 pb-8 md:flex-row md:items-center md:justify-between">
+              <Link href="/" className="block" aria-label="Sigma homepage">
+                <img
+                  src="/sigma-logo-assets/sigma-logo-full-w.png"
+                  alt="Sigma"
+                  width={120}
+                  height={40}
+                  className="h-8 w-auto"
+                />
               </Link>
-              <Link
-                href="/privacy"
-                className="text-patient-200 underline underline-offset-2 hover:text-white"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/refund"
-                className="text-patient-200 underline underline-offset-2 hover:text-white"
-              >
-                Refund Policy
-              </Link>
-              <Link
-                href="/contact"
-                className="text-patient-200 underline underline-offset-2 hover:text-white"
-              >
-                Contact
-              </Link>
-              <Link
-                href="/portal"
-                className="text-patient-200 underline underline-offset-2 hover:text-white"
-              >
-                Patient Portal
-              </Link>
-            </nav>
-            <div className="mt-8 text-center text-sm text-patient-300">
-              <p>[Business address placeholder]</p>
-              <p>Support: [support email placeholder]</p>
-              <p>Hours: [hours placeholder]</p>
+              <nav className="flex flex-wrap gap-6 text-sm" aria-label="Footer navigation">
+                <Link href="/" className="text-white no-underline hover:opacity-80">
+                  For Patients
+                </Link>
+                <Link href="/physicians.html" className="text-white no-underline hover:opacity-80">
+                  For Physicians
+                </Link>
+              </nav>
             </div>
-            <p className="mt-8 text-center text-xs text-patient-400">
-              This service does not provide emergency care.
-            </p>
+            <hr className="border-patient-800" />
+            <div className="flex flex-col gap-6 pt-8 md:flex-row md:items-center md:justify-between">
+              <p className="text-sm text-patient-300">
+                Sigma is not for emergencies – call 911 in urgent cases.
+              </p>
+              <nav className="flex flex-wrap gap-6 text-sm text-patient-400" aria-label="Legal links">
+                <Link href="/privacy" className="no-underline hover:text-white">
+                  Privacy Policy
+                </Link>
+                <Link href="/terms" className="no-underline hover:text-white">
+                  Terms of Service
+                </Link>
+                <Link href="/refund" className="no-underline hover:text-white">
+                  Refund Policy
+                </Link>
+                <Link href="/contact" className="no-underline hover:text-white">
+                  Contact
+                </Link>
+              </nav>
+            </div>
           </div>
         </footer>
       </main>
