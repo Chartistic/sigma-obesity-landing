@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sigma | GLP-1 Support</title>
+  <meta name="description" content="GLP-1 medication support, compare options, and clinician recommendations. Prescriptions only after clinician review.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="sigma-favicon/favicon.svg">
+  <link rel="icon" type="image/png" href="sigma-favicon/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;600&display=swap">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --color-patient-50: #fef8f8;
+      --color-patient-200: #ffc3c3;
+      --color-patient-300: #f79e9f;
+      --color-patient-400: #ef7b80;
+      --color-patient-600: #b54450;
+      --color-patient-700: #843c43;
+      --color-patient-800: #5b3136;
+      --color-patient-900: #282525;
+      --color-patient-950: #151414;
+      --color-doctor-200: #c8e4f9;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: "Mona Sans", ui-sans-serif, system-ui, sans-serif;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Full-screen wrapper */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow: hidden;
+    }
+
+    /* Background image */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('/large-screen-model.jpg') center / cover no-repeat;
+      background-color: #e6f2fc;
+    }
+
+    /* Sigma gradient overlay */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(200,228,249,0.35) 0%, rgba(255,195,195,0.35) 100%);
+    }
+
+    /* Header */
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1rem;
+    }
+    @media (min-width: 768px) { .header { padding: 1.25rem 2rem; } }
+
+    .logo {
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      color: var(--color-patient-950);
+      text-decoration: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.625rem;
+      border-radius: 9999px;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--color-patient-700);
+    }
+
+    /* Card layout */
+    .card-wrapper {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: 6rem 1rem 3rem;
+    }
+    @media (min-width: 768px) {
+      .card-wrapper {
+        justify-content: center;
+        padding: 0 1rem 4rem;
+      }
+    }
+
+    /* Floating card */
+    .card {
+      width: 100%;
+      max-width: 28rem;
+      background: #fff;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(255,195,195,0.3), 0 4px 16px rgba(0,0,0,0.06);
+    }
+    @media (min-width: 768px) { .card { padding: 2rem; } }
+
+    /* Step transitions */
+    .step { display: none; }
+    .step.active { display: block; animation: fadeIn 0.25s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Heading */
+    .card h1, .card h2 {
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      color: var(--color-patient-950);
+      line-height: 1.25;
+    }
+    .card h1 { font-size: 1.5rem; }
+    .card h2 { font-size: 1.25rem; }
+    @media (min-width: 768px) {
+      .card h1 { font-size: 1.875rem; }
+      .card h2 { font-size: 1.5rem; }
+    }
+
+    /* Pill buttons */
+    .choices { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+
+    .pill {
+      display: block;
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border: 1px solid var(--color-patient-200);
+      border-radius: 9999px;
+      background: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--color-patient-900);
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .pill:hover { background: var(--color-patient-50); border-color: var(--color-patient-300); }
+    .pill:focus-visible { outline: 2px solid var(--color-patient-400); outline-offset: 2px; }
+
+    /* Microcopy */
+    .microcopy {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--color-patient-600);
+      line-height: 1.5;
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-patient-600);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      padding: 0;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: var(--color-patient-800); }
+
+    /* Form */
+    .form-fields { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-patient-800);
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      display: block;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--color-patient-200);
+      border-radius: 0.5rem;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--color-patient-950);
+      background: #fff;
+      transition: border-color 0.15s;
+    }
+    input::placeholder { color: var(--color-patient-400); }
+    input:focus {
+      outline: none;
+      border-color: var(--color-patient-400);
+      box-shadow: 0 0 0 1px var(--color-patient-400);
+    }
+
+    /* CTA button */
+    .cta {
+      display: block;
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 1rem 1.5rem;
+      border: 1px solid var(--color-patient-900);
+      border-radius: 9999px;
+      background: var(--color-patient-900);
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .cta:hover { background: var(--color-patient-800); }
+    .cta:focus-visible { outline: 2px solid var(--color-patient-400); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <header class="header">
+      <a href="/" class="logo">Sigma</a>
+      <span class="badge" aria-hidden="true">1/3</span>
+    </header>
+
+    <main class="card-wrapper">
+      <div class="card">
+        <!-- Step 1: Choices -->
+        <div id="step-choices" class="step active">
+          <h1>What are you looking for today?</h1>
+          <div class="choices">
+            <button type="button" class="pill" data-advance>GLP-1 medication support</button>
+            <button type="button" class="pill" data-advance>Compare options</button>
+            <button type="button" class="pill" data-advance>I have insurance</button>
+            <button type="button" class="pill" data-advance>Clinician recommendation</button>
+          </div>
+          <p class="microcopy">Takes 2 minutes. Prescriptions only after clinician review.</p>
+        </div>
+
+        <!-- Step 2: Form -->
+        <div id="step-form" class="step">
+          <button type="button" class="back-link" id="back-btn">&larr; Back</button>
+          <h2>A few details</h2>
+          <form class="form-fields" onsubmit="return false;">
+            <div>
+              <label for="state">State</label>
+              <input id="state" type="text" placeholder="e.g. Arizona">
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="height">Height</label>
+                <input id="height" type="text" placeholder='e.g. 5&#x27;10"'>
+              </div>
+              <div>
+                <label for="weight">Weight</label>
+                <input id="weight" type="text" placeholder="e.g. 180 lbs">
+              </div>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="you@example.com">
+            </div>
+            <button type="submit" class="cta">Continue</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const stepChoices = document.getElementById('step-choices');
+    const stepForm = document.getElementById('step-form');
+
+    document.querySelectorAll('[data-advance]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        stepChoices.classList.remove('active');
+        stepForm.classList.add('active');
+      });
+    });
+
+    document.getElementById('back-btn').addEventListener('click', function() {
+      stepForm.classList.remove('active');
+      stepChoices.classList.add('active');
+    });
+  </script>
+</body>
+</html>
