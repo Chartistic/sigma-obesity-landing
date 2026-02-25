@@ -1,0 +1,214 @@
+/* =============================================
+   Eligibility Modal — shared across b variants
+   ============================================= */
+.elig-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  align-items: flex-end;
+  justify-content: center;
+}
+.elig-backdrop.open { display: flex; }
+
+.elig-modal {
+  background: #fff;
+  border-radius: 1.5rem 1.5rem 0 0;
+  padding: 2rem 1.5rem 2.25rem;
+  width: 100%;
+  max-width: 28rem;
+  max-height: 92vh;
+  overflow-y: auto;
+  animation: eligSlideUp 0.3s ease-out;
+}
+@keyframes eligSlideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.elig-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.elig-header h2 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #151414;
+  margin: 0;
+  line-height: 1.2;
+}
+.elig-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #8a91a0;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.15s;
+}
+.elig-close:hover { color: #151414; }
+
+.elig-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.elig-form label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #5b3136;
+  margin-bottom: 0.25rem;
+}
+.elig-form select,
+.elig-form input[type="text"],
+.elig-form input[type="email"] {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d8dbe2;
+  border-radius: 0.75rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #151414;
+  background: #fff;
+  transition: border-color 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.elig-form select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Cpath stroke='%238a91a0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+.elig-form input:focus,
+.elig-form select:focus {
+  outline: none;
+  border-color: #ef7b80;
+  box-shadow: 0 0 0 2px rgba(239,123,128,0.15);
+}
+.elig-form input::placeholder { color: #8a91a0; }
+
+.elig-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.elig-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+.elig-checkbox input[type="checkbox"] {
+  margin-top: 0.2rem;
+  accent-color: #282525;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+.elig-checkbox span {
+  font-size: 0.8125rem;
+  color: #843c43;
+  line-height: 1.45;
+}
+
+.elig-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin-top: 0.5rem;
+}
+.elig-submit {
+  display: block;
+  width: 100%;
+  padding: 0.9375rem 1.5rem;
+  border: 2px solid #151414;
+  border-radius: 99em;
+  background: #151414;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.elig-submit:hover { background: #282525; border-color: #282525; }
+.elig-submit:focus-visible { outline: 2px solid #ef7b80; outline-offset: 2px; }
+
+.elig-cancel {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 99em;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #8a91a0;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.elig-cancel:hover { color: #151414; }
+
+.elig-microcopy {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #b54450;
+  line-height: 1.5;
+}
+
+/* Thanks state */
+.elig-thanks {
+  display: none;
+  text-align: center;
+  padding: 2rem 0 1rem;
+}
+.elig-thanks-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 auto 1.25rem;
+  border-radius: 99em;
+  background: #fde9ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.elig-thanks-icon svg { width: 1.75rem; height: 1.75rem; color: #282525; }
+.elig-thanks h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #151414;
+  margin-bottom: 0.75rem;
+}
+.elig-thanks p {
+  font-size: 1rem;
+  color: #5b3136;
+  line-height: 1.6;
+}
+
+/* Desktop: center modal */
+@media (min-width: 768px) {
+  .elig-backdrop { align-items: center; }
+  .elig-modal {
+    border-radius: 1.5rem;
+    padding: 2.25rem 2rem 2.5rem;
+    animation-name: eligFadeScale;
+  }
+  @keyframes eligFadeScale {
+    from { transform: scale(0.96); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+  }
+}

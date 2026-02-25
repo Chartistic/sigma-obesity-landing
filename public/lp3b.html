@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sigma | GLP-1 Medication Support — Physician-Led Weight Loss</title>
+  <meta name="description" content="A clinician-led GLP-1 program that streamlines intake, follow-ups, and medication management. Apply in 2 minutes. Prescriptions only after clinician approval.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="sigma-favicon/favicon.svg">
+  <link rel="icon" type="image/png" href="sigma-favicon/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="eligibility.css">
+  <style>
+    /* =============================================
+       RESET
+       ============================================= */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* =============================================
+       DESIGN TOKENS
+       ============================================= */
+    :root {
+      /* Patient (warm) scale */
+      --patient-50:  #fef8f8;
+      --patient-75:  #fdefef;
+      --patient-100: #fde9ea;
+      --patient-200: #ffc3c3;
+      --patient-300: #f79e9f;
+      --patient-400: #ef7b80;
+      --patient-500: #e4505c;
+      --patient-600: #b54450;
+      --patient-700: #843c43;
+      --patient-800: #5b3136;
+      --patient-900: #282525;
+      --patient-950: #151414;
+
+      /* Doctor (cool) scale */
+      --doctor-50:  #f5fafe;
+      --doctor-100: #e6f2fc;
+      --doctor-200: #c8e4f9;
+      --doctor-300: #87ccf4;
+      --doctor-400: #52b0db;
+      --doctor-700: #285d73;
+
+      /* Neutral */
+      --gray-50:  #f7f8f9;
+      --gray-100: #eef0f3;
+      --gray-200: #d8dbe2;
+      --gray-400: #8a91a0;
+      --gray-600: #565961;
+
+      /* Warm off-white for Hims-style premium feel */
+      --warm-bg:  #faf9f7;
+      --cream-bg: #f5f3ef;
+
+      /* Radii */
+      --radius:      1.5rem;
+      --radius-sm:   1rem;
+      --radius-pill:  99em;
+
+      /* Shadows */
+      --shadow-subtle: 0 1px 2px rgba(0,0,0,0.03), 0 4px 12px rgba(0,0,0,0.04);
+      --shadow-card:   0 1px 3px rgba(0,0,0,0.04), 0 6px 24px rgba(0,0,0,0.06);
+      --shadow-lg:     0 4px 12px rgba(0,0,0,0.04), 0 20px 56px rgba(0,0,0,0.08);
+
+      /* Motion */
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition: 200ms var(--ease);
+
+      /* Container */
+      --container: min(76rem, 90vw);
+      --container-narrow: min(52rem, 90vw);
+    }
+
+    /* =============================================
+       BASE
+       ============================================= */
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Mona Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--patient-950);
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a   { color: inherit; }
+    button { font-family: inherit; cursor: pointer; }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* =============================================
+       TYPOGRAPHY — Premium scale
+       ============================================= */
+    h1, h2, h3 {
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      color: var(--patient-950);
+    }
+
+    /* =============================================
+       BUTTONS — High-contrast, generous
+       ============================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1.125rem 2.5rem;
+      border-radius: var(--radius-pill);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: all var(--transition);
+      border: 2px solid transparent;
+      white-space: nowrap;
+    }
+    .btn:focus-visible {
+      outline: 2px solid var(--patient-400);
+      outline-offset: 3px;
+    }
+    .btn-primary {
+      background: var(--patient-950);
+      color: #fff;
+      border-color: var(--patient-950);
+    }
+    .btn-primary:hover {
+      background: var(--patient-900);
+      border-color: var(--patient-900);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(21,20,20,0.15);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--patient-950);
+      border-color: var(--patient-900);
+    }
+    .btn-secondary:hover {
+      background: var(--patient-950);
+      color: #fff;
+    }
+    .btn-sm {
+      padding: 0.75rem 1.75rem;
+      font-size: 0.9375rem;
+    }
+
+    /* =============================================
+       HEADER — Minimal, sticky
+       ============================================= */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.125rem 1.5rem;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    .site-header.scrolled {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    }
+    .header-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo img { height: 1.875rem; width: auto; }
+    .header-nav { display: flex; align-items: center; gap: 1.25rem; }
+    .header-nav a {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--patient-950);
+      text-decoration: none;
+      transition: opacity var(--transition);
+    }
+    .header-nav a:hover { opacity: 0.6; }
+    .header-nav .btn-signup {
+      background: var(--patient-950);
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: -0.01em;
+      transition: all var(--transition);
+      border: none;
+    }
+    .header-nav .btn-signup:hover { background: var(--patient-800); }
+    @media (min-width: 768px) {
+      .site-header { padding: 1.25rem 2.5rem; }
+      .header-logo img { height: 2.125rem; }
+      .header-nav { gap: 1.75rem; }
+    }
+
+    /* =============================================
+       SECTION FRAMEWORK — Generous breathing room
+       ============================================= */
+    .section {
+      padding: 5.5rem 1.5rem;
+    }
+    .section-warm {
+      background: var(--warm-bg);
+    }
+    .section-cream {
+      background: var(--cream-bg);
+    }
+    .section-cool {
+      background: var(--doctor-50);
+    }
+    .section-dark {
+      background: var(--patient-950);
+      color: #fff;
+    }
+    .section-dark h2,
+    .section-dark h3 { color: #fff; }
+    .section-dark p { color: rgba(255,255,255,0.75); }
+    .section-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .section-header h2 {
+      font-size: 2.25rem;
+    }
+    .section-header p {
+      margin-top: 1.25rem;
+      font-size: 1.1875rem;
+      line-height: 1.65;
+      color: var(--patient-700);
+      max-width: 38rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (min-width: 768px) {
+      .section { padding: 8rem 2.5rem; }
+      .section-header { margin-bottom: 5rem; }
+      .section-header h2 { font-size: 3rem; }
+    }
+    @media (min-width: 1024px) {
+      .section-header h2 { font-size: 3.25rem; }
+    }
+
+    /* =============================================
+       CARD — Clean, generous
+       ============================================= */
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-100);
+      padding: 2rem;
+    }
+    @media (min-width: 768px) { .card { padding: 2.5rem; } }
+
+    /* =============================================
+       1. HERO
+       ============================================= */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--doctor-50);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: none;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 65% center;
+    }
+    @media (min-width: 768px) {
+      .hero-bg { display: block; }
+      .hero { background: var(--doctor-50); }
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: var(--container);
+      margin: 0 auto;
+      width: 100%;
+      padding: 7.5rem 1.5rem 3.5rem;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 36rem;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--patient-600);
+      margin-bottom: 1.25rem;
+    }
+    .hero-card h1 {
+      font-size: 2.125rem;
+      line-height: 1.08;
+    }
+    .hero-sub {
+      margin-top: 1.25rem;
+      font-size: 1.125rem;
+      line-height: 1.65;
+      color: var(--patient-800);
+    }
+    .hero-trust {
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--patient-600);
+      line-height: 1.5;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      width: 100%;
+    }
+    .hero-ctas .btn { width: 100%; }
+    @media (min-width: 768px) {
+      .hero-content { padding: 0 2.5rem; }
+      .hero-card { padding: 3rem; }
+      .hero-card h1 { font-size: 2.75rem; }
+      .hero-sub { font-size: 1.1875rem; }
+      .hero-ctas { flex-direction: row; }
+      .hero-ctas .btn { width: auto; }
+    }
+    @media (min-width: 1024px) {
+      .hero-card { padding: 3.5rem; }
+      .hero-card h1 { font-size: 3.25rem; }
+    }
+
+    /* =============================================
+       2. SOCIAL PROOF STRIP
+       ============================================= */
+    .proof-strip {
+      padding: 2rem 1.5rem;
+      background: var(--patient-950);
+      text-align: center;
+    }
+    .proof-strip p {
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      max-width: var(--container);
+      margin: 0 auto;
+      letter-spacing: -0.01em;
+    }
+    @media (min-width: 768px) {
+      .proof-strip { padding: 2.25rem 2.5rem; }
+      .proof-strip p { font-size: 1.0625rem; }
+    }
+
+    /* =============================================
+       3. PROBLEM AGITATION
+       ============================================= */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+    }
+    .problem-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.75rem 2rem;
+    }
+    .problem-icon {
+      flex-shrink: 0;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--patient-100), var(--doctor-100));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .problem-icon svg { width: 1.375rem; height: 1.375rem; color: var(--patient-600); }
+    .problem-card p {
+      font-size: 1.125rem;
+      color: var(--patient-800);
+      line-height: 1.55;
+      font-weight: 400;
+    }
+    .bridge {
+      max-width: 44rem;
+      margin: 3.5rem auto 0;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.6;
+      color: var(--patient-900);
+    }
+    @media (min-width: 640px) {
+      .problem-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* =============================================
+       4. WHAT YOU GET
+       ============================================= */
+    .get-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .get-card {
+      padding: 2rem;
+    }
+    .get-card-icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      margin-bottom: 1.25rem;
+      color: var(--patient-500);
+    }
+    .get-card h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+    .get-card p {
+      font-size: 1rem;
+      color: var(--patient-700);
+      line-height: 1.6;
+    }
+    .get-addons {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9375rem;
+      color: var(--patient-600);
+    }
+    @media (min-width: 640px) {
+      .get-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 1024px) {
+      .get-grid { grid-template-columns: repeat(3, 1fr); }
+      .get-card { padding: 2.5rem; }
+    }
+
+    /* =============================================
+       5. HOW IT WORKS
+       ============================================= */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .step-card {
+      text-align: center;
+      padding: 2.75rem 2rem;
+      position: relative;
+    }
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3.25rem;
+      height: 3.25rem;
+      border-radius: var(--radius-pill);
+      background: var(--patient-950);
+      color: #fff;
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .step-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .step-card p {
+      font-size: 1.0625rem;
+      color: var(--patient-700);
+      line-height: 1.6;
+    }
+    .steps-cta {
+      text-align: center;
+      margin-top: 3.5rem;
+    }
+    @media (min-width: 768px) {
+      .steps-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* =============================================
+       6. WHAT MAKES SIGMA DIFFERENT — Split layout
+       ============================================= */
+    .diff-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .diff-copy h2 {
+      font-size: 2.25rem;
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+    .diff-copy > p {
+      font-size: 1.125rem;
+      color: var(--patient-700);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .diff-label {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--patient-900);
+      margin-bottom: 1rem;
+    }
+    .diff-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+    .diff-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.0625rem;
+      color: var(--patient-800);
+    }
+    .diff-bullets li::before {
+      content: "";
+      flex-shrink: 0;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: var(--radius-pill);
+      background: var(--patient-950);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M6 10.5l2.5 2.5 5.5-6'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    .diff-visual {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+    }
+    .diff-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media (min-width: 768px) {
+      .diff-layout { grid-template-columns: 1fr 1fr; gap: 5rem; }
+      .diff-copy h2 { font-size: 2.75rem; }
+    }
+    @media (min-width: 1024px) {
+      .diff-layout { grid-template-columns: 3fr 2fr; gap: 6rem; }
+      .diff-copy h2 { font-size: 3rem; }
+    }
+
+    /* =============================================
+       7. MEDICATION OPTIONS — image cards
+       ============================================= */
+    .meds-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 52rem;
+      margin: 0 auto;
+    }
+    .med-card {
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .med-card-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+    .med-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .med-card-body {
+      padding: 2rem 2rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .med-card-body h3 {
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .med-card-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+    .med-card-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-size: 1rem;
+      color: var(--patient-800);
+      line-height: 1.5;
+    }
+    .med-card-bullets li::before {
+      content: "";
+      flex-shrink: 0;
+      width: 0.375rem;
+      height: 0.375rem;
+      border-radius: var(--radius-pill);
+      background: var(--patient-400);
+    }
+    .med-card-link {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--patient-900);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      transition: color var(--transition);
+    }
+    .med-card-link:hover { color: var(--patient-600); }
+    .med-card-link svg {
+      width: 1rem;
+      height: 1rem;
+      transition: transform var(--transition);
+    }
+    .med-card-link:hover svg { transform: translateX(2px); }
+    .meds-note {
+      text-align: center;
+      max-width: 44rem;
+      margin: 2.5rem auto 0;
+      font-size: 0.875rem;
+      color: var(--patient-600);
+      line-height: 1.6;
+    }
+    @media (min-width: 640px) {
+      .meds-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 768px) {
+      .med-card-body { padding: 2.25rem 2.5rem 2.5rem; }
+    }
+
+    /* =============================================
+       7b. MEET THE CLINICIANS
+       ============================================= */
+    .clinicians-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .clinician-card {
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .clinician-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--doctor-200), var(--patient-200));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .clinician-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .clinician-photo svg {
+      width: 3.5rem;
+      height: 3.5rem;
+      color: #fff;
+      opacity: 0.7;
+    }
+    .clinician-body {
+      padding: 1.5rem 1.5rem 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .clinician-body h3 {
+      font-size: 1.125rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.375rem;
+    }
+    .clinician-specialty {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--patient-600);
+      line-height: 1.45;
+      margin-bottom: 1rem;
+    }
+    .clinician-bio {
+      font-size: 1rem;
+      color: var(--patient-700);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .clinician-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      margin-top: 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--patient-900);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .clinician-link:hover { color: var(--patient-600); }
+    .clinician-link svg {
+      width: 0.875rem;
+      height: 0.875rem;
+      transition: transform var(--transition);
+    }
+    .clinician-link:hover svg { transform: translateX(2px); }
+    @media (min-width: 768px) {
+      .clinicians-grid { grid-template-columns: repeat(3, 1fr); }
+      .clinician-body { padding: 1.75rem 1.75rem 2rem; }
+    }
+
+    /* =============================================
+       8. PRICING
+       ============================================= */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 50rem;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      position: relative;
+      padding: 2.75rem;
+    }
+    .pricing-card.featured {
+      border-color: var(--patient-300);
+      border-width: 2px;
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -0.8125rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--patient-950);
+      color: #fff;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 0.375rem 1.25rem;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+    .pricing-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .pricing-price {
+      margin-top: 0.625rem;
+      font-size: 2.75rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--patient-950);
+    }
+    .pricing-price span {
+      font-size: 1.125rem;
+      font-weight: 400;
+      color: var(--patient-600);
+    }
+    .pricing-desc {
+      margin-top: 0.5rem;
+      font-size: 0.9375rem;
+      color: var(--patient-600);
+    }
+    .pricing-features {
+      margin-top: 2rem;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1rem;
+      color: var(--patient-800);
+    }
+    .pricing-features li::before {
+      content: "";
+      flex-shrink: 0;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: var(--radius-pill);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='10' fill='%23fde9ea'/%3E%3Cpath stroke='%23282525' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M6 10.5l2.5 2.5 5.5-6'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    .pricing-card .btn {
+      width: 100%;
+      margin-top: 2.25rem;
+    }
+    .pricing-note {
+      text-align: center;
+      max-width: 44rem;
+      margin: 3rem auto 0;
+      font-size: 0.9375rem;
+      color: var(--patient-600);
+      line-height: 1.6;
+    }
+    @media (min-width: 768px) {
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-card { padding: 3rem; }
+    }
+
+    /* =============================================
+       9. INSURANCE & PRIOR AUTH
+       ============================================= */
+    .insurance-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .insurance-copy h2 {
+      font-size: 2.25rem;
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+    .insurance-copy p {
+      font-size: 1.125rem;
+      color: var(--patient-700);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+    .insurance-copy p:last-child { margin-bottom: 0; }
+    .insurance-visual {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+    }
+    .insurance-visual img { width: 100%; height: 100%; object-fit: cover; }
+    @media (min-width: 768px) {
+      .insurance-layout { grid-template-columns: 1fr 1fr; gap: 5rem; }
+      .insurance-copy h2 { font-size: 2.75rem; }
+    }
+
+    /* =============================================
+       10. SAFETY
+       ============================================= */
+    .safety-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .safety-copy h2 {
+      font-size: 2.25rem;
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+    .safety-copy p {
+      font-size: 1.125rem;
+      color: var(--patient-700);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+    .safety-copy p:last-child { margin-bottom: 0; }
+    .safety-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+      margin-top: 1.75rem;
+    }
+    .safety-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-pill);
+      background: #fff;
+      border: 1px solid var(--gray-100);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--patient-800);
+    }
+    .safety-badge svg { width: 1rem; height: 1rem; color: var(--patient-500); }
+    .safety-visual {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+    }
+    .safety-visual img { width: 100%; height: 100%; object-fit: cover; }
+    @media (min-width: 768px) {
+      .safety-layout { grid-template-columns: 1fr 1fr; gap: 5rem; }
+      .safety-copy h2 { font-size: 2.75rem; }
+    }
+
+    /* =============================================
+       11. TESTIMONIALS
+       ============================================= */
+    .testimonial-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      max-width: var(--container);
+      margin: 0 auto 3.5rem;
+      aspect-ratio: 21 / 9;
+    }
+    .testimonial-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .testimonial-card {
+      padding: 2.5rem;
+    }
+    .testimonial-card blockquote {
+      font-size: 1.125rem;
+      line-height: 1.65;
+      color: var(--patient-800);
+      font-style: normal;
+    }
+    .testimonial-card blockquote::before {
+      content: "\201C";
+      display: block;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--patient-300);
+      margin-bottom: 0.75rem;
+    }
+    .testimonial-author {
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--patient-600);
+    }
+    @media (min-width: 768px) {
+      .testimonial-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* =============================================
+       12. FAQ ACCORDION
+       ============================================= */
+    .faq-list {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      list-style: none;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .faq-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      width: 100%;
+      padding: 1.5rem 0;
+      background: none;
+      border: none;
+      font-size: 1.125rem;
+      font-weight: 600;
+      text-align: left;
+      color: var(--patient-950);
+      letter-spacing: -0.01em;
+      transition: color var(--transition);
+    }
+    .faq-trigger:hover { color: var(--patient-700); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 1.375rem;
+      height: 1.375rem;
+      transition: transform var(--transition);
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 24rem; }
+    .faq-answer p {
+      padding-bottom: 1.5rem;
+      font-size: 1.0625rem;
+      color: var(--patient-700);
+      line-height: 1.7;
+    }
+
+    /* =============================================
+       13. FINAL CTA
+       ============================================= */
+    .final-cta {
+      padding: 6.5rem 1.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--patient-100) 0%, var(--doctor-200) 100%);
+    }
+    .final-cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .final-cta p {
+      font-size: 1.125rem;
+      color: var(--patient-800);
+      margin-bottom: 2.5rem;
+      max-width: 30rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .final-cta .safety-line {
+      margin-top: 2rem;
+      margin-bottom: 0;
+      font-size: 0.8125rem;
+      color: var(--patient-700);
+    }
+    @media (min-width: 768px) {
+      .final-cta { padding: 9rem 2.5rem; }
+      .final-cta h2 { font-size: 3.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .final-cta h2 { font-size: 4rem; }
+    }
+
+    /* =============================================
+       FOOTER
+       ============================================= */
+    .site-footer {
+      background: var(--patient-950);
+      color: #fff;
+      padding: 3.5rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+    }
+    .footer-top img { height: 1.625rem; width: auto; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-nav a {
+      font-size: 0.9375rem;
+      text-decoration: none;
+      color: rgba(255,255,255,0.6);
+      transition: color var(--transition);
+    }
+    .footer-nav a:hover { color: #fff; }
+    .footer-divider {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .footer-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-top: 2rem;
+    }
+    .footer-bottom p {
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+    .footer-legal { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-legal a {
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-legal a:hover { color: #fff; }
+    @media (min-width: 768px) {
+      .site-footer { padding: 4rem 2.5rem; }
+      .footer-top { flex-direction: row; align-items: center; justify-content: space-between; }
+      .footer-bottom { flex-direction: row; align-items: center; justify-content: space-between; }
+    }
+
+    /* =============================================
+       SCROLL-TRIGGERED REVEALS
+       ============================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="sr-only">Skip to content</a>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="/" class="header-logo" aria-label="Sigma homepage">
+        <img src="sigma-logo-assets/sigma-logo-full.png" alt="Sigma" width="120" height="40">
+      </a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="/login">Login</a>
+        <a href="/signup" class="btn-signup">Get started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================
+         1. HERO
+         ============================================ -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-bg">
+        <img src="images/hero-front-facing-obese-man3.jpg" alt="" loading="eager">
+      </div>
+      <div class="hero-content">
+        <div class="hero-card reveal">
+          <span class="hero-eyebrow">Physician-led GLP-1 program</span>
+          <h1 id="hero-heading">Lose weight with GLP-1 medication support — without the chaos.</h1>
+          <p class="hero-sub">A clinician-led program that streamlines intake, follow-ups, and medication management so you stay on track.</p>
+          <p class="hero-trust">Physician review. Secure communication. Prescriptions only after clinician approval.</p>
+          <div class="hero-ctas">
+            <a href="#" class="btn btn-primary" data-open-eligibility>Check eligibility</a>
+            <a href="#how-it-works" class="btn btn-secondary">See how it works</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         2. SOCIAL PROOF STRIP
+         ============================================ -->
+    <div class="proof-strip">
+      <p>Trusted by patients who want a structured program — not just a prescription.</p>
+    </div>
+
+    <!-- ============================================
+         3. PROBLEM AGITATION
+         ============================================ -->
+    <section class="section section-warm" aria-labelledby="problem-heading">
+      <div class="section-inner">
+        <div class="section-header reveal">
+          <h2 id="problem-heading">If you've looked into GLP-1s, you've probably hit one of these.</h2>
+        </div>
+        <div class="problem-grid">
+          <div class="card problem-card reveal">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <p>You can get a prescription, but you're left alone with side effects and uncertainty.</p>
+          </div>
+          <div class="card problem-card reveal">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <p>You spend weeks bouncing between forms, pharmacies, and prior auth.</p>
+          </div>
+          <div class="card problem-card reveal">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v4"/><path d="M12 19v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M1 12h4"/><path d="M19 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
+            </div>
+            <p>You don't know what you'll pay until it's too late.</p>
+          </div>
+          <div class="card problem-card reveal">
+            <div class="problem-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18.36 6.64A9 9 0 1 1 5.64 6.64"/><path d="M12 2v4"/></svg>
+            </div>
+            <p>You lose momentum because support feels fragmented.</p>
+          </div>
+        </div>
+        <p class="bridge reveal">Sigma is built to make the process simple, fast, and clinically responsible.</p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         4. WHAT YOU GET
+         ============================================ -->
+    <section class="section" aria-labelledby="get-heading">
+      <div class="section-inner">
+        <div class="section-header reveal">
+          <h2 id="get-heading">A complete GLP-1 support program</h2>
+        </div>
+        <div class="get-grid">
+          <div class="card get-card reveal">
+            <svg class="get-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <h3>Structured intake</h3>
+            <p>Collects what clinicians actually need — no redundant paperwork, no wasted steps.</p>
+          </div>
+          <div class="card get-card reveal">
+            <svg class="get-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            <h3>Clinician review and plan</h3>
+            <p>A licensed clinician reviews your intake and determines the appropriate next steps for your care.</p>
+          </div>
+          <div class="card get-card reveal">
+            <svg class="get-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <h3>Ongoing adjustments and check-ins</h3>
+            <p>Consistent follow-ups and plan adjustments so you stay on track over time.</p>
+          </div>
+          <div class="card get-card reveal">
+            <svg class="get-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <h3>Side-effect support and guidance</h3>
+            <p>Real-time guidance on managing medication effects with clinician oversight.</p>
+          </div>
+          <div class="card get-card reveal">
+            <svg class="get-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+            <h3>Clear next steps after every touchpoint</h3>
+            <p>You always know what's happening and what comes next. No guessing.</p>
+          </div>
+          <div class="card get-card reveal">
+            <svg class="get-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <h3>Optional add-ons</h3>
+            <p>Nutrition coaching, habit support, and labs coordination available if you want them.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         5. HOW IT WORKS
+         ============================================ -->
+    <section class="section section-cool" id="how-it-works" aria-labelledby="how-heading">
+      <div class="section-inner">
+        <div class="section-header reveal">
+          <h2 id="how-heading">How it works</h2>
+        </div>
+        <div class="steps-grid">
+          <div class="card step-card reveal">
+            <div class="step-num">1</div>
+            <h3>Apply</h3>
+            <p>Answer a short set of questions about your goals, history, and current status.</p>
+          </div>
+          <div class="card step-card reveal">
+            <div class="step-num">2</div>
+            <h3>Clinician review</h3>
+            <p>A licensed clinician reviews your intake. If appropriate, you receive a plan and medication options.</p>
+          </div>
+          <div class="card step-card reveal">
+            <div class="step-num">3</div>
+            <h3>Ongoing support</h3>
+            <p>Structured follow-ups and clear guidance help you stay consistent. If a prescription is issued, it is sent to your preferred pharmacy.</p>
+          </div>
+        </div>
+        <div class="steps-cta reveal">
+          <a href="#" class="btn btn-primary" data-open-eligibility>Check eligibility</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         6. MEDICATION OPTIONS
+         ============================================ -->
+    <section class="section section-warm" aria-labelledby="meds-heading">
+      <div class="section-inner">
+        <div class="section-header reveal">
+          <h2 id="meds-heading">Medication options</h2>
+          <p>If clinically appropriate, a physician may discuss injection-based or oral options.</p>
+        </div>
+        <div class="meds-grid">
+          <div class="card med-card reveal">
+            <div class="med-card-img">
+              <img src="images/Injection.jpg" alt="Injection pen" loading="lazy">
+            </div>
+            <div class="med-card-body">
+              <h3>Injections</h3>
+              <ul class="med-card-bullets">
+                <li>Discussed if clinically appropriate</li>
+                <li>Ongoing follow-ups and adjustments</li>
+                <li>Medication cost separate</li>
+              </ul>
+              <a href="#faq" class="med-card-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </div>
+          <div class="card med-card reveal">
+            <div class="med-card-img">
+              <img src="images/pill.jpg" alt="Oral medication" loading="lazy">
+            </div>
+            <div class="med-card-body">
+              <h3>Oral</h3>
+              <ul class="med-card-bullets">
+                <li>Discussed if clinically appropriate</li>
+                <li>A simple option for some patients</li>
+                <li>Medication cost separate</li>
+              </ul>
+              <a href="#faq" class="med-card-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <p class="meds-note reveal">Medication cost is separate. Prescriptions only after clinician review.</p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         7. WHAT MAKES SIGMA DIFFERENT
+         ============================================ -->
+    <section class="section" aria-labelledby="diff-heading">
+      <div class="section-inner">
+        <div class="diff-layout">
+          <div class="diff-copy reveal">
+            <h2 id="diff-heading">What makes Sigma different</h2>
+            <p>We are not trying to be a generic clinic. We are building a workflow engine that removes admin friction so clinicians can focus on medical judgment, and patients get a smoother experience.</p>
+            <div class="diff-label">What that means for you:</div>
+            <ul class="diff-bullets">
+              <li>Faster intake, less back-and-forth</li>
+              <li>More consistent follow-ups</li>
+              <li>Clearer process from day one</li>
+              <li>A program that feels coordinated</li>
+            </ul>
+          </div>
+          <div class="diff-visual reveal">
+            <img src="images/studio-sideprofile-smiling.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         7b. MEET THE CLINICIANS
+         ============================================ -->
+    <section class="section section-cool" aria-labelledby="clinicians-heading">
+      <div class="section-inner">
+        <div class="section-header reveal">
+          <h2 id="clinicians-heading">Meet the clinicians</h2>
+          <p>Physician-led care with a thorough medical evaluation and steady follow-ups.</p>
+        </div>
+        <div class="clinicians-grid">
+          <div class="card clinician-card reveal">
+            <div class="clinician-photo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="clinician-body">
+              <h3>Dr. Gauri Behari, MD</h3>
+              <div class="clinician-specialty">Endocrinology, Diabetes &amp; Metabolism</div>
+              <p class="clinician-bio">Focus on metabolic health and long-term outcomes.</p>
+              <a href="#" class="clinician-link">View profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </div>
+          <div class="card clinician-card reveal">
+            <div class="clinician-photo">
+              <img src="images/Nedo.jpg" alt="Dr. Michal Nedoszytko" loading="lazy">
+            </div>
+            <div class="clinician-body">
+              <h3>Dr. Michal Nedoszytko, MD, PhD</h3>
+              <div class="clinician-specialty">Interventional Cardiology</div>
+              <p class="clinician-bio">Clinical rigor and safety-first decision-making.</p>
+              <a href="#" class="clinician-link">View profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </div>
+          <div class="card clinician-card reveal">
+            <div class="clinician-photo">
+              <img src="images/Mariusz.jpg" alt="Dr. Mariusz Borkowski" loading="lazy">
+            </div>
+            <div class="clinician-body">
+              <h3>Dr. Mariusz Borkowski, MD, PhD</h3>
+              <div class="clinician-specialty">Aesthetic and reconstructive medicine — certified obesitologist</div>
+              <p class="clinician-bio">Experience across preventive care, longevity, and obesity support.</p>
+              <a href="#" class="clinician-link">View profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <p class="meds-note reveal" style="margin-top: 2.5rem;">Prescriptions only after clinician review. Not for emergencies.</p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         8. PRICING
+         ============================================ -->
+    <section class="section" id="pricing" aria-labelledby="pricing-heading">
+      <div class="section-inner">
+        <div class="section-header reveal">
+          <h2 id="pricing-heading">Transparent pricing</h2>
+          <p>Simple membership. Medication cost separate and depends on what is prescribed and your pharmacy or coverage.</p>
+        </div>
+        <div class="pricing-grid">
+          <div class="card pricing-card reveal">
+            <div class="pricing-name">Core</div>
+            <div class="pricing-price">$150 <span>/month</span></div>
+            <div class="pricing-desc">Program support and clinician access</div>
+            <ul class="pricing-features">
+              <li>Physician evaluation</li>
+              <li>Personalized treatment plan</li>
+              <li>Ongoing follow-ups</li>
+              <li>Side-effect support</li>
+              <li>Progress tracking</li>
+            </ul>
+            <a href="#" class="btn btn-secondary" data-open-eligibility>Start Core</a>
+          </div>
+          <div class="card pricing-card featured reveal">
+            <div class="pricing-badge">Most popular</div>
+            <div class="pricing-name">Plus</div>
+            <div class="pricing-price">$250 <span>/month</span></div>
+            <div class="pricing-desc">Enhanced support and priority access</div>
+            <ul class="pricing-features">
+              <li>Everything in Core</li>
+              <li>Priority scheduling</li>
+              <li>More frequent follow-ups</li>
+              <li>Enhanced progress reviews</li>
+              <li>Labs coordination</li>
+            </ul>
+            <a href="#" class="btn btn-primary" data-open-eligibility>Start Plus</a>
+          </div>
+        </div>
+        <p class="pricing-note reveal">If the physician determines you're not clinically appropriate for the program, you will get a refund.</p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         9. INSURANCE & PRIOR AUTH
+         ============================================ -->
+    <section class="section section-cool" aria-labelledby="insurance-heading">
+      <div class="section-inner">
+        <div class="insurance-layout">
+          <div class="insurance-copy reveal">
+            <h2 id="insurance-heading">Insurance and prior authorization</h2>
+            <p>If you're using insurance, the hardest part is often admin. We can support documentation and coordination depending on your situation.</p>
+            <p>Sigma is currently self-pay. This means no prior authorization delays and no waiting for coverage decisions. You pay a straightforward monthly membership.</p>
+            <p>For medication costs, many patients use manufacturer savings programs or pharmacy discount cards. Your care team can help you navigate options.</p>
+          </div>
+          <div class="insurance-visual reveal">
+            <img src="images/studio-sideprofile-serious.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         10. SAFETY
+         ============================================ -->
+    <section class="section" aria-labelledby="safety-heading">
+      <div class="section-inner">
+        <div class="safety-layout">
+          <div class="safety-visual reveal">
+            <img src="images/lifestyle-corridor-obese-man.jpg" alt="" loading="lazy">
+          </div>
+          <div class="safety-copy reveal">
+            <h2 id="safety-heading">Safety-first, always.</h2>
+            <p>GLP-1s are powerful medications and not for everyone. We use clear eligibility rules and escalation paths to keep you safe.</p>
+            <p>Every decision in your program is made by a licensed physician. No shortcuts, no auto-generated plans. If you have urgent symptoms, seek immediate care.</p>
+            <div class="safety-badges">
+              <span class="safety-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Licensed physicians
+              </span>
+              <span class="safety-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                Eligibility screening
+              </span>
+              <span class="safety-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                Ongoing monitoring
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         11. TESTIMONIALS
+         ============================================ -->
+    <section class="section section-warm" aria-labelledby="testimonials-heading">
+      <div class="section-inner">
+        <div class="section-header reveal">
+          <h2 id="testimonials-heading">What members say</h2>
+        </div>
+        <div class="testimonial-image reveal">
+          <img src="images/lifestyle-rooftop-bluehour-obese-man.jpg" alt="" loading="lazy">
+        </div>
+        <div class="testimonial-grid">
+          <div class="card testimonial-card reveal">
+            <blockquote>This felt structured. I always knew the next step.</blockquote>
+            <div class="testimonial-author">— Sigma member</div>
+          </div>
+          <div class="card testimonial-card reveal">
+            <blockquote>Finally a program that doesn't waste my time.</blockquote>
+            <div class="testimonial-author">— Sigma member</div>
+          </div>
+          <div class="card testimonial-card reveal">
+            <blockquote>Support was consistent, not random.</blockquote>
+            <div class="testimonial-author">— Sigma member</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         12. FAQ
+         ============================================ -->
+    <section class="section" id="faq" aria-labelledby="faq-heading">
+      <div class="section-inner">
+        <div class="section-header reveal">
+          <h2 id="faq-heading">Frequently asked questions</h2>
+        </div>
+        <ul class="faq-list" role="list">
+          <li class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              Do you prescribe brand-name GLP-1s?
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            </button>
+            <div class="faq-answer"><p>If clinically appropriate, a clinician may prescribe FDA-approved options. Availability and coverage vary.</p></div>
+          </li>
+          <li class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              Are medications included in the membership?
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            </button>
+            <div class="faq-answer"><p>No — medication costs are separate and depend on pharmacy and coverage.</p></div>
+          </li>
+          <li class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              Do you work with insurance?
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            </button>
+            <div class="faq-answer"><p>We can support coordination depending on your case. The program itself is currently self-pay.</p></div>
+          </li>
+          <li class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              How fast can I start?
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            </button>
+            <div class="faq-answer"><p>You can apply in minutes. Timelines depend on clinician review and any required documentation.</p></div>
+          </li>
+          <li class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              What if I'm not clinically appropriate?
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            </button>
+            <div class="faq-answer"><p>If the physician determines you're not clinically appropriate for the program, you will get a refund.</p></div>
+          </li>
+          <li class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              Can I cancel anytime?
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            </button>
+            <div class="faq-answer"><p>Yes. Cancel from your account at any time. Your membership remains active through the end of your billing period.</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================
+         13. FINAL CTA
+         ============================================ -->
+    <section class="final-cta" aria-labelledby="final-heading">
+      <div class="reveal">
+        <h2 id="final-heading">Ready to get started?</h2>
+        <p>Apply in 2 minutes and see if you qualify.</p>
+        <a href="#" class="btn btn-primary" data-open-eligibility>Check eligibility</a>
+        <p class="safety-line">Prescriptions only after clinician approval. Not for emergencies.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <a href="/" aria-label="Sigma homepage">
+          <img src="sigma-logo-assets/sigma-logo-full-w.svg" alt="Sigma" width="120" height="40">
+        </a>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="/">For Patients</a>
+          <a href="/physicians.html">For Physicians</a>
+        </nav>
+      </div>
+      <hr class="footer-divider">
+      <div class="footer-bottom">
+        <p>Sigma is not for emergencies — call 911 in urgent cases.</p>
+        <nav class="footer-legal" aria-label="Legal links">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/refund">Refund Policy</a>
+          <a href="/contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    /* Sticky header */
+    (function() {
+      var h = document.getElementById('site-header');
+      function c() { h.classList.toggle('scrolled', window.scrollY > 48); }
+      window.addEventListener('scroll', c, { passive: true });
+      c();
+    })();
+
+    /* FAQ accordion */
+    (function() {
+      document.querySelectorAll('.faq-trigger').forEach(function(t) {
+        t.addEventListener('click', function() {
+          var item = t.parentElement;
+          var open = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(function(o) {
+            o.classList.remove('open');
+            o.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+          });
+          if (!open) {
+            item.classList.add('open');
+            t.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    })();
+
+    /* Scroll-triggered reveals */
+    (function() {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function(el) { el.classList.add('visible'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function(el) { observer.observe(el); });
+    })();
+  </script>
+
+  <!-- Eligibility Modal -->
+  <div class="elig-backdrop" id="elig-backdrop" role="dialog" aria-modal="true" aria-labelledby="elig-title">
+    <div class="elig-modal">
+      <div class="elig-header">
+        <h2 id="elig-title">Check eligibility</h2>
+        <button type="button" class="elig-close" data-close-eligibility aria-label="Close">&times;</button>
+      </div>
+      <div id="elig-form-view">
+        <form class="elig-form" id="elig-form">
+          <div>
+            <label for="elig-state">State</label>
+            <select id="elig-state"><option value="">Select state</option><option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
+          </div>
+          <div class="elig-row">
+            <div><label for="elig-height">Height</label><input id="elig-height" type="text" placeholder="e.g. 5'10&quot;"></div>
+            <div><label for="elig-weight">Weight</label><input id="elig-weight" type="text" placeholder="e.g. 180 lbs"></div>
+          </div>
+          <div><label for="elig-email">Email</label><input id="elig-email" type="email" placeholder="you@example.com"></div>
+          <div class="elig-checkbox"><input id="elig-emergency" type="checkbox"><span><label for="elig-emergency">I understand this is not for emergencies.</label></span></div>
+          <div class="elig-actions">
+            <button type="submit" class="elig-submit">Continue</button>
+            <button type="button" class="elig-cancel" data-close-eligibility>Cancel</button>
+          </div>
+          <p class="elig-microcopy">Prescriptions only after clinician review. Not for emergencies.</p>
+        </form>
+      </div>
+      <div class="elig-thanks" id="elig-thanks">
+        <div class="elig-thanks-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <h3>Thanks!</h3>
+        <p>We'll reach out with next steps.</p>
+      </div>
+    </div>
+  </div>
+  <script src="eligibility.js"></script>
+</body>
+</html>

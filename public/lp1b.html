@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;600&display=swap">
+  <link rel="stylesheet" href="eligibility.css">
   <style>
     /* ========================================
        RESET + BASE
@@ -150,12 +151,22 @@
     .header-nav { display: flex; align-items: center; gap: 1.5rem; }
     .header-nav a {
       font-size: 0.9375rem;
-      font-weight: 500;
-      color: var(--patient-800);
+      font-weight: 600;
+      color: var(--patient-950);
       text-decoration: none;
-      transition: color var(--transition);
+      transition: opacity var(--transition);
     }
-    .header-nav a:hover { color: var(--patient-950); }
+    .header-nav a:hover { opacity: 0.7; }
+    .header-nav .btn-signup {
+      background: #fff;
+      color: var(--patient-950);
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      transition: opacity var(--transition);
+    }
+    .header-nav .btn-signup:hover { opacity: 0.9; }
     @media (min-width: 768px) {
       .site-header { padding: 1.25rem 2rem; }
       .header-logo img { height: 2.25rem; }
@@ -213,12 +224,13 @@
       grid-template-columns: 1fr;
       align-items: end;
       overflow: hidden;
-      background: linear-gradient(135deg, var(--doctor-100) 0%, #fff 60%);
+      background: var(--doctor-100);
     }
     .hero-image {
       position: absolute;
       inset: 0;
       z-index: 1;
+      display: none;
     }
     .hero-image img {
       width: 100%;
@@ -226,17 +238,11 @@
       object-fit: cover;
       object-position: 70% center;
     }
+    @media (min-width: 768px) {
+      .hero-image { display: block; }
+    }
     .hero-image::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to right,
-        rgba(255,255,255,0.95) 0%,
-        rgba(255,255,255,0.8) 38%,
-        rgba(255,255,255,0.15) 68%,
-        transparent 100%
-      );
+      display: none;
     }
     .hero-content {
       position: relative;
@@ -283,15 +289,12 @@
       color: var(--patient-600);
     }
     @media (min-width: 768px) {
-      .hero { align-items: center; }
+      .hero {
+        align-items: center;
+        background: linear-gradient(135deg, var(--doctor-100) 0%, #fff 60%);
+      }
       .hero-image::after {
-        background: linear-gradient(
-          to right,
-          rgba(255,255,255,0.97) 0%,
-          rgba(255,255,255,0.85) 32%,
-          rgba(255,255,255,0.2) 60%,
-          transparent 100%
-        );
+        display: none;
       }
       .hero-content {
         padding: 0 2rem;
@@ -916,8 +919,8 @@
         <img src="sigma-logo-assets/sigma-logo-full.png" alt="Sigma" width="120" height="40">
       </a>
       <nav class="header-nav" aria-label="Main navigation">
-        <a href="/terms">Terms</a>
-        <a href="/privacy">Privacy</a>
+        <a href="/login">Login</a>
+        <a href="/signup" class="btn-signup">Signup</a>
       </nav>
     </div>
   </header>
@@ -927,17 +930,17 @@
     <!-- 1. HERO -->
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-image">
-        <img src="images/hero-front-facing-obese-man.jpg" alt="" loading="eager">
+        <img src="images/hero-front-facing-obese-man3.jpg" alt="" loading="eager">
       </div>
       <div class="hero-content">
         <div class="hero-card">
           <h1 id="hero-heading">When you've tried everything, care should feel different.</h1>
           <p class="hero-body">Obesity is a medical condition, not a character flaw. This is a physician-led program designed to work with your biology - with a thorough medical evaluation and steady follow-up support. GLP-1 medications may be discussed when clinically appropriate.</p>
           <div class="hero-ctas">
-            <a href="/checkout" class="btn btn-primary">Start membership</a>
-            <a href="#pricing" class="btn btn-secondary">See pricing + how it works</a>
+            <a href="#" class="btn btn-primary" data-open-eligibility>Check eligibility</a>
+            <a href="#familiar" class="btn btn-secondary">Learn more</a>
           </div>
-          <p class="hero-note">After checkout, you'll complete a detailed medical intake (typically 20-45 minutes). If the physician determines you're not clinically appropriate for the program, you can request a refund within [X] days after completing intake.</p>
+          <p class="hero-note">After checkout, you'll complete a detailed medical intake (typically 20-45 minutes). If the physician determines you're not clinically appropriate for the program, you will get a refund.</p>
         </div>
       </div>
     </section>
@@ -978,7 +981,7 @@
     </div>
 
     <!-- 2. PAIN CARDS -->
-    <section class="section" aria-labelledby="pain-heading">
+    <section class="section" id="familiar" aria-labelledby="pain-heading">
       <div class="section-inner">
         <h2 class="section-title" id="pain-heading">Does this sound familiar?</h2>
         <div class="pain-grid" style="max-width: 48rem; margin: 0 auto;">
@@ -1089,7 +1092,7 @@
           </div>
         </div>
         <div class="steps-cta">
-          <a href="/checkout" class="btn btn-primary">Start membership</a>
+          <a href="#" class="btn btn-primary" data-open-eligibility>Check eligibility</a>
         </div>
       </div>
     </section>
@@ -1148,7 +1151,7 @@
               <li>Ongoing follow-ups</li>
               <li>Progress tracking</li>
             </ul>
-            <a href="/checkout?plan=core" class="btn btn-secondary">Start Core</a>
+            <a href="#" class="btn btn-secondary" data-open-eligibility>Start Core</a>
           </div>
           <div class="card pricing-card featured">
             <div class="pricing-badge">Most popular</div>
@@ -1160,7 +1163,7 @@
               <li>More frequent follow-ups</li>
               <li>Enhanced progress reviews</li>
             </ul>
-            <a href="/checkout?plan=plus" class="btn btn-primary">Start Plus</a>
+            <a href="#" class="btn btn-primary" data-open-eligibility>Start Plus</a>
           </div>
         </div>
         <p class="pricing-note">Medication cost separate. Membership covers the clinical program and support.</p>
@@ -1205,15 +1208,15 @@
         <div class="testimonial-grid" style="max-width: 64rem; margin: 0 auto;">
           <div class="card testimonial-card">
             <blockquote>Clear, respectful, and realistic. I finally felt like someone had a plan.</blockquote>
-            <div class="testimonial-author">- Sigma member</div>
+            <div class="testimonial-author">- Christoph J.</div>
           </div>
           <div class="card testimonial-card">
             <blockquote>Not gimmicky. It felt like actual medical care, not a quick transaction.</blockquote>
-            <div class="testimonial-author">- Sigma member</div>
+            <div class="testimonial-author">- Anton K.</div>
           </div>
           <div class="card testimonial-card">
             <blockquote>I liked that nothing was promised. It was thoughtful and structured.</blockquote>
-            <div class="testimonial-author">- Sigma member</div>
+            <div class="testimonial-author">- Joseph A.</div>
           </div>
         </div>
       </div>
@@ -1264,14 +1267,14 @@
               Is this covered by insurance?
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
             </button>
-            <div class="faq-answer"><p>[Insert your actual policy].</p></div>
+            <div class="faq-answer"><p>No, currently it is self-pay only.</p></div>
           </li>
           <li class="faq-item">
             <button type="button" class="faq-trigger" aria-expanded="false">
               What if I'm not clinically appropriate?
               <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
             </button>
-            <div class="faq-answer"><p>If the physician determines you're not clinically appropriate for the program, you can request a refund within [X] days after completing the intake. The evaluation stays consistent and safety-first.</p></div>
+            <div class="faq-answer"><p>If the physician determines you're not clinically appropriate for the program, you will get a refund. The evaluation stays consistent and safety-first.</p></div>
           </li>
         </ul>
       </div>
@@ -1281,7 +1284,7 @@
     <section class="final-cta" aria-labelledby="final-cta-heading">
       <h2 id="final-cta-heading">Your weight shouldn't wait.</h2>
       <p>Physician-led care designed around your biology. Start your evaluation today.</p>
-      <a href="/checkout" class="btn btn-primary">Start membership</a>
+      <a href="#" class="btn btn-primary" data-open-eligibility>Check eligibility</a>
       <p class="safety-line">Prescriptions only after clinician review. Not for emergencies.</p>
     </section>
 
@@ -1365,5 +1368,40 @@
       });
     })();
   </script>
+
+  <!-- Eligibility Modal -->
+  <div class="elig-backdrop" id="elig-backdrop" role="dialog" aria-modal="true" aria-labelledby="elig-title">
+    <div class="elig-modal">
+      <div class="elig-header">
+        <h2 id="elig-title">Check eligibility</h2>
+        <button type="button" class="elig-close" data-close-eligibility aria-label="Close">&times;</button>
+      </div>
+      <div id="elig-form-view">
+        <form class="elig-form" id="elig-form">
+          <div>
+            <label for="elig-state">State</label>
+            <select id="elig-state"><option value="">Select state</option><option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
+          </div>
+          <div class="elig-row">
+            <div><label for="elig-height">Height</label><input id="elig-height" type="text" placeholder="e.g. 5'10&quot;"></div>
+            <div><label for="elig-weight">Weight</label><input id="elig-weight" type="text" placeholder="e.g. 180 lbs"></div>
+          </div>
+          <div><label for="elig-email">Email</label><input id="elig-email" type="email" placeholder="you@example.com"></div>
+          <div class="elig-checkbox"><input id="elig-emergency" type="checkbox"><span><label for="elig-emergency">I understand this is not for emergencies.</label></span></div>
+          <div class="elig-actions">
+            <button type="submit" class="elig-submit">Continue</button>
+            <button type="button" class="elig-cancel" data-close-eligibility>Cancel</button>
+          </div>
+          <p class="elig-microcopy">Prescriptions only after clinician review. Not for emergencies.</p>
+        </form>
+      </div>
+      <div class="elig-thanks" id="elig-thanks">
+        <div class="elig-thanks-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <h3>Thanks!</h3>
+        <p>We'll reach out with next steps.</p>
+      </div>
+    </div>
+  </div>
+  <script src="eligibility.js"></script>
 </body>
 </html>

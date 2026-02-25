@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sigma | GLP-1 Support</title>
+  <meta name="description" content="GLP-1 medication support, compare options, and clinician recommendations. Prescriptions only after clinician review.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="sigma-favicon/favicon.svg">
+  <link rel="icon" type="image/png" href="sigma-favicon/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;600&display=swap">
+  <link rel="stylesheet" href="eligibility.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --color-patient-50: #fef8f8;
+      --color-patient-200: #ffc3c3;
+      --color-patient-300: #f79e9f;
+      --color-patient-400: #ef7b80;
+      --color-patient-600: #b54450;
+      --color-patient-700: #843c43;
+      --color-patient-800: #5b3136;
+      --color-patient-900: #282525;
+      --color-patient-950: #151414;
+      --color-doctor-200: #c8e4f9;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: "Mona Sans", ui-sans-serif, system-ui, sans-serif;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Full-screen wrapper */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow: hidden;
+    }
+
+    /* Background image */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('/large-screen-model.jpg') center / cover no-repeat;
+      background-color: #e6f2fc;
+    }
+
+    .hero-overlay { display: none; }
+
+    /* Header */
+    .header {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1rem;
+    }
+    @media (min-width: 768px) { .header { padding: 1.25rem 2rem; } }
+
+    .logo { display: block; text-decoration: none; }
+    .logo img { display: block; height: 2rem; width: auto; }
+    @media (min-width: 768px) { .logo img { height: 2.5rem; } }
+
+    /* Card layout – pinned to bottom */
+    .card-wrapper {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: 6rem 1rem 0;
+    }
+    @media (min-width: 768px) {
+      .card-wrapper { padding: 0 1rem 0; }
+    }
+
+    /* Floating card */
+    .card {
+      width: 100%;
+      max-width: 28rem;
+      background: #fff;
+      border-radius: 1rem 1rem 0 0;
+      padding: 1.75rem 1.5rem 2.25rem;
+      box-shadow: 0 -8px 40px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    @media (min-width: 768px) { .card { padding: 2.25rem 2rem 2.75rem; } }
+
+    .card h1 {
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      color: var(--color-patient-950);
+      line-height: 1.2;
+      font-size: 1.5rem;
+    }
+    @media (min-width: 768px) { .card h1 { font-size: 1.875rem; } }
+
+    .card-body {
+      margin-top: 0.875rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--color-patient-700);
+    }
+
+    .card-cta {
+      display: block;
+      width: 100%;
+      margin-top: 1.5rem;
+      padding: 1rem 1.5rem;
+      border: 2px solid var(--color-patient-900);
+      border-radius: 9999px;
+      background: var(--color-patient-900);
+      font-family: inherit;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      text-decoration: none;
+    }
+    .card-cta:hover { background: var(--color-patient-800); border-color: var(--color-patient-800); }
+    .card-cta:focus-visible { outline: 2px solid var(--color-patient-400); outline-offset: 2px; }
+
+    .microcopy {
+      margin-top: 1.25rem;
+      font-size: 0.75rem;
+      color: var(--color-patient-600);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <header class="header">
+      <a href="/" class="logo"><img src="sigma-logo-assets/sigma-logo-full-w.svg" alt="Sigma Clinic"></a>
+    </header>
+
+    <main class="card-wrapper">
+      <div class="card">
+        <h1>GLP-1 medication support, built around you.</h1>
+        <p class="card-body">Clinician-led program with structured intake, follow-ups, and medication management.</p>
+        <a href="#" class="card-cta" data-open-eligibility>Check eligibility</a>
+        <p class="microcopy">Takes 2 minutes. Prescriptions only after clinician review. Not for emergencies.</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- Eligibility Modal -->
+  <div class="elig-backdrop" id="elig-backdrop" role="dialog" aria-modal="true" aria-labelledby="elig-title">
+    <div class="elig-modal">
+      <div class="elig-header">
+        <h2 id="elig-title">Check eligibility</h2>
+        <button type="button" class="elig-close" data-close-eligibility aria-label="Close">&times;</button>
+      </div>
+      <div id="elig-form-view">
+        <form class="elig-form" id="elig-form">
+          <div>
+            <label for="elig-state">State</label>
+            <select id="elig-state"><option value="">Select state</option><option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option></select>
+          </div>
+          <div class="elig-row">
+            <div><label for="elig-height">Height</label><input id="elig-height" type="text" placeholder="e.g. 5'10&quot;"></div>
+            <div><label for="elig-weight">Weight</label><input id="elig-weight" type="text" placeholder="e.g. 180 lbs"></div>
+          </div>
+          <div><label for="elig-email">Email</label><input id="elig-email" type="email" placeholder="you@example.com"></div>
+          <div class="elig-checkbox"><input id="elig-emergency" type="checkbox"><span><label for="elig-emergency">I understand this is not for emergencies.</label></span></div>
+          <div class="elig-actions">
+            <button type="submit" class="elig-submit">Continue</button>
+            <button type="button" class="elig-cancel" data-close-eligibility>Cancel</button>
+          </div>
+          <p class="elig-microcopy">Prescriptions only after clinician review. Not for emergencies.</p>
+        </form>
+      </div>
+      <div class="elig-thanks" id="elig-thanks">
+        <div class="elig-thanks-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <h3>Thanks!</h3>
+        <p>We'll reach out with next steps.</p>
+      </div>
+    </div>
+  </div>
+  <script src="eligibility.js"></script>
+</body>
+</html>
