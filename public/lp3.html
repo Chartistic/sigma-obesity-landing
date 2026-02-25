@@ -695,32 +695,39 @@
       margin: 0 auto;
     }
     .clinician-card {
-      text-align: center;
-      padding: 2.5rem 2rem 2.25rem;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
-    .clinician-avatar {
-      width: 5.5rem;
-      height: 5.5rem;
-      border-radius: var(--radius-pill);
-      margin: 0 auto 1.5rem;
+    .clinician-photo {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
       background: linear-gradient(135deg, var(--doctor-200), var(--patient-200));
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
     }
-    .clinician-avatar img {
+    .clinician-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
     }
-    .clinician-avatar svg {
-      width: 2.75rem;
-      height: 2.75rem;
+    .clinician-photo svg {
+      width: 3.5rem;
+      height: 3.5rem;
       color: #fff;
-      opacity: 0.85;
+      opacity: 0.7;
     }
-    .clinician-card h3 {
+    .clinician-body {
+      padding: 1.75rem 1.75rem 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .clinician-body h3 {
       font-size: 1.125rem;
       letter-spacing: -0.01em;
       margin-bottom: 0.375rem;
@@ -730,12 +737,13 @@
       font-weight: 500;
       color: var(--patient-600);
       line-height: 1.45;
-      margin-bottom: 0.875rem;
+      margin-bottom: 1rem;
     }
     .clinician-bio {
       font-size: 1rem;
       color: var(--patient-700);
       line-height: 1.6;
+      flex: 1;
     }
     .clinician-link {
       display: inline-flex;
@@ -757,7 +765,7 @@
     .clinician-link:hover svg { transform: translateX(2px); }
     @media (min-width: 768px) {
       .clinicians-grid { grid-template-columns: repeat(3, 1fr); }
-      .clinician-card { padding: 3rem 2.25rem 2.5rem; }
+      .clinician-body { padding: 2rem 2rem 2.25rem; }
     }
 
     /* =============================================
@@ -1384,31 +1392,37 @@
         </div>
         <div class="clinicians-grid">
           <div class="card clinician-card reveal">
-            <div class="clinician-avatar">
+            <div class="clinician-photo">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             </div>
-            <h3>Dr. Gauri Behari, MD</h3>
-            <div class="clinician-specialty">Endocrinology, Diabetes &amp; Metabolism</div>
-            <p class="clinician-bio">Focus on metabolic health and long-term outcomes.</p>
-            <a href="#" class="clinician-link">View profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+            <div class="clinician-body">
+              <h3>Dr. Gauri Behari, MD</h3>
+              <div class="clinician-specialty">Endocrinology, Diabetes &amp; Metabolism</div>
+              <p class="clinician-bio">Focus on metabolic health and long-term outcomes.</p>
+              <a href="#" class="clinician-link">View profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+            </div>
           </div>
           <div class="card clinician-card reveal">
-            <div class="clinician-avatar">
-              <img src="images/Nedo.jpg" alt="Dr. Michal Nedoszytko">
+            <div class="clinician-photo">
+              <img src="images/Nedo.jpg" alt="Dr. Michal Nedoszytko" loading="lazy">
             </div>
-            <h3>Dr. Michal Nedoszytko, MD, PhD</h3>
-            <div class="clinician-specialty">Interventional Cardiology</div>
-            <p class="clinician-bio">Clinical rigor and safety-first decision-making.</p>
-            <a href="#" class="clinician-link">View profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+            <div class="clinician-body">
+              <h3>Dr. Michal Nedoszytko, MD, PhD</h3>
+              <div class="clinician-specialty">Interventional Cardiology</div>
+              <p class="clinician-bio">Clinical rigor and safety-first decision-making.</p>
+              <a href="#" class="clinician-link">View profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+            </div>
           </div>
           <div class="card clinician-card reveal">
-            <div class="clinician-avatar">
-              <img src="images/Mariusz.jpg" alt="Dr. Mariusz Borkowski">
+            <div class="clinician-photo">
+              <img src="images/Mariusz.jpg" alt="Dr. Mariusz Borkowski" loading="lazy">
             </div>
-            <h3>Dr. Mariusz Borkowski, MD, PhD</h3>
-            <div class="clinician-specialty">Aesthetic and reconstructive medicine — certified obesitologist</div>
-            <p class="clinician-bio">Experience across preventive care, longevity, and obesity support.</p>
-            <a href="#" class="clinician-link">View profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+            <div class="clinician-body">
+              <h3>Dr. Mariusz Borkowski, MD, PhD</h3>
+              <div class="clinician-specialty">Aesthetic and reconstructive medicine — certified obesitologist</div>
+              <p class="clinician-bio">Experience across preventive care, longevity, and obesity support.</p>
+              <a href="#" class="clinician-link">View profile <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+            </div>
           </div>
         </div>
         <p class="meds-note reveal" style="margin-top: 2.5rem;">Prescriptions only after clinician review. Not for emergencies.</p>
